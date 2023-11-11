@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from "./auth/auth.module";
 import { LogModule } from './userLog/log.module';
 import { LogService } from './userLog/log.service';
+import { ArticleModule } from './article/article.module';
 @Module({
   imports: [
     // 环境变量模块
@@ -53,6 +54,7 @@ import { LogService } from './userLog/log.service';
     UserModule,
     AuthModule,
     LogModule,
+    ArticleModule,
   ],
   controllers: [AppController],
   providers: [AppService, LogService],

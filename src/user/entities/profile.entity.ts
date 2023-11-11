@@ -12,6 +12,8 @@ export class Profile {
   id: number;
   @Column({ default: '' })
   nickName: string;
+  @Column({ type: 'longtext', nullable: true })
+  avatar: string;
   @Column({ default: '' })
   signature: string;
   @Column({ default: '' })

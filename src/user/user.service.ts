@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as argon2 from 'argon2';
 import { Profile } from './entities/profile.entity';
-import { UserProfileDto, UserProfileUpdateDto } from './dto/userProfile.dto';
+import { UserProfileDto } from './dto/userProfile.dto';
 @Injectable()
 export class UserService {
   constructor(
@@ -18,6 +18,7 @@ export class UserService {
     return await this.userRepository.save({
       username: user.username,
       password: hashPassword,
+      createdTime: new Date().getTime(),
     });
   }
   // 验证用户密码方法
@@ -42,11 +43,10 @@ export class UserService {
         userId,
       })
       .getOne();
-    console.log(data, 'data');
     return data;
   }
   // 更新用户关联信息
-  async updateUserInfo(proFile: UserProfileUpdateDto) {
+  async updateUserInfo(proFile: UserProfileDto) {
     const proFileDetail = await this.getUserInfoById(proFile.userId);
     if (proFileDetail) {
       const data = await this.profileRespository.save({
