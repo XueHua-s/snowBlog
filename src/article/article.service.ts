@@ -144,7 +144,7 @@ export class ArticleService {
       .offset(((params.current || 1) - 1) * (params.size || 10))
       .limit(params.size || 10)
       .getMany();
-    const total = createBuilder.getCount();
+    const total = await createBuilder.getCount();
     // 子查询递归
     const promiseAll = [];
     for (const item of data) {
