@@ -15,12 +15,12 @@ export class AuthController {
     const res = await this.userService.verifyUserAndPassword(user);
     if (res) {
       return {
-        code: 0,
+        code: 1,
         data: {
           ...res,
           token: await this.jwt.signAsync({
             username: res.username,
-            password: res.password,
+            password: res.password || '',
             id: res.id,
           }),
         },
@@ -29,7 +29,7 @@ export class AuthController {
     }
     console.log(res, 'res');
     return {
-      code: 1,
+      code: 0,
       data: res,
       message: '登录失败',
     };
@@ -41,7 +41,7 @@ export class AuthController {
   async register(@Body() user: SigninUserDto) {
     const res = await this.userService.registerUser(user);
     return {
-      code: 0,
+      code: 1,
       data: {
         ...res,
         password: undefined,

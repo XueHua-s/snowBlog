@@ -8,7 +8,9 @@ import {
 } from './interceptors/response.interceptor';
 import { generateDocument } from './doc';
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    cors: true,
+  });
   app.setGlobalPrefix('api');
   const httpAdapterHost = app.get(HttpAdapterHost);
   app.useGlobalFilters(new HttpExceptionFilter(Logger, httpAdapterHost));
