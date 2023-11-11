@@ -18,7 +18,6 @@ export class UserService {
     return await this.userRepository.save({
       username: user.username,
       password: hashPassword,
-      createdTime: new Date().getTime(),
     });
   }
   // 验证用户密码方法
@@ -43,12 +42,17 @@ export class UserService {
         userId,
       })
       .getOne();
-    return data;
+    return {
+      ...data,
+      userId,
+    };
   }
-  // 更新用户关联信息
+  // 更新用户关联信息(传userId)
   async updateUserInfo(proFile: UserProfileDto) {
+    // 获取用户信息实例
     const proFileDetail = await this.getUserInfoById(proFile.userId);
     if (proFileDetail) {
+      // 如果有用户资料进行保存更新
       const data = await this.profileRespository.save({
         ...proFileDetail,
         ...proFile,
@@ -62,6 +66,7 @@ export class UserService {
       }
       return null;
     } else {
+      // 没有进行数据插入
       const data = await this.profileRespository.insert({
         ...proFile,
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -77,4 +82,8 @@ export class UserService {
       return null;
     }
   }
+  // 删除用户(鉴权有无权限)
+  async removeUser() {}
+  // 用户列表(鉴权有无权限)
+  async findUserList() {}
 }

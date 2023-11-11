@@ -13,6 +13,6 @@ export class Classify {
   parentId: number;
   @OneToMany(() => Article, (article) => article.classify)
   articles: Article[];
-  @Column({ type: 'bigint', default: new Date().getTime() })
-  createdTime: number;
+  @Column({ default: new Date().getTime().toString() })
+  createdTime: string;
 }

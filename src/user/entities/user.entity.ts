@@ -7,10 +7,10 @@ export class User {
   id: number;
   @Column({ unique: true })
   username: string;
-  @Column()
+  @Column({ select: false })
   password: string;
-  @Column({ type: 'bigint', default: new Date().getTime() })
-  createdTime: number;
+  @Column({ default: new Date().getTime().toString() })
+  createdTime: string;
   @OneToMany(() => Logs, (log) => log.user)
   logs: Logs[];
   @OneToMany(() => Article, (article) => article.user)
