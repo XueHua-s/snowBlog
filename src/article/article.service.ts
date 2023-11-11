@@ -1,11 +1,12 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { Body, HttpException, Injectable, Post } from '@nestjs/common';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Article } from './entities/article.entity';
 import { Classify } from './entities/classify.entity';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
-import { UserService } from "../user/user.service";
+import { UserService } from '../user/user.service';
+import { FindClassifyThreeDto } from './dto/findClassifyThree.dto';
 @Injectable()
 export class ArticleService {
   constructor(
@@ -53,13 +54,13 @@ export class ArticleService {
       })
       .getOne();
     if (data) {
-      const userProfile = await this.userService.getUserInfoById(data.user.id)
+      const userProfile = await this.userService.getUserInfoById(data.user.id);
       data.user = {
         ...data.user,
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         userProfile,
-      }
+      };
       return data;
     }
     return null;
@@ -80,10 +81,16 @@ export class ArticleService {
   async getArticles(params: QueryArticlesDto) {
     const createBuilder = this.articleRepository
       .createQueryBuilder('article')
-      .leftJoinAndSelect('article.user', 'user');
+      .leftJoinAndSelect('article.user', 'user')
+      .leftJoinAndSelect('article.classify', 'classify');
     if (params.title) {
       createBuilder.where('article.title LIKE :title', {
         title: params.title,
+      });
+    }
+    if (params.classifyId) {
+      createBuilder.andWhere('classify.id = :id', {
+        id: params.classifyId,
       });
     }
     const total = await createBuilder.getCount();
@@ -112,9 +119,75 @@ export class ArticleService {
           user: {
             ...article.user,
           },
+          classify: article.classify && {
+            ...article.classify,
+          },
         })),
         total: total,
       };
+    }
+    return null;
+  }
+  // 查询树状分类列表
+  async getClassifyThree(params: FindClassifyThreeDto) {
+    const createBuilder = this.classifyRepository
+      .createQueryBuilder('classify')
+      .where('classify.parentId = :id', {
+        id: -1,
+      });
+    if (params.name) {
+      createBuilder.andWhere('classify.name = :name', {
+        name: params.name,
+      });
+    }
+    const data = await createBuilder
+      .offset(((params.current || 1) - 1) * (params.size || 10))
+      .limit(params.size || 10)
+      .getMany();
+    const total = createBuilder.getCount();
+    // 子查询递归
+    const promiseAll = [];
+    for (const item of data) {
+      promiseAll.push(
+        this.getsTheCategoriesAssociatedWithTheCategory(item.id).then((res) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          item.children = res;
+        }),
+      );
+    }
+    await Promise.all(promiseAll);
+    if (data) {
+      return {
+        records: JSON.parse(JSON.stringify(data)),
+        total: total,
+      };
+    }
+    return null;
+  }
+  // 获取父分类下的子分类
+  async getsTheCategoriesAssociatedWithTheCategory(classId: number) {
+    const data = await this.classifyRepository
+      .createQueryBuilder('classify')
+      .andWhere('classify.parentId = :parentId', {
+        parentId: classId,
+      })
+      .getMany();
+    if (data) {
+      const promieAll = [];
+      for (const item of data) {
+        promieAll.push(
+          this.getsTheCategoriesAssociatedWithTheCategory(item.id).then(
+            (res) => {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-expect-error
+              item.children = res;
+            },
+          ),
+        );
+      }
+      await Promise.all(promieAll);
+      return JSON.parse(JSON.stringify(data));
     }
     return null;
   }

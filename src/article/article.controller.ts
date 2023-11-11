@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Post, Query, Req, UsePipes } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Query,
+  Req,
+  UsePipes,
+} from '@nestjs/common';
 import { ArticleService } from './article.service';
 import { CreateArticleDto } from './dto/create-article.dto';
 import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
@@ -6,6 +15,7 @@ import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { PagePipe } from '../pipe/Page.pipe';
+import { FindClassifyThreeDto } from "./dto/findClassifyThree.dto";
 @ApiTags('文章')
 @Controller('article')
 export class ArticleController {
@@ -60,25 +70,45 @@ export class ArticleController {
       message: '查询失败',
     };
   }
+  // 获取文章详情
   @ApiOperation({
-    summary: '获取文章详情'
+    summary: '获取文章详情',
   })
   @Get('getArticleById/:id')
-  async getArticleById (@Param('id')id :number) {
-    const data = await this.articleService.getArticleDetail(id)
+  async getArticleById(@Param('id') id: number) {
+    const data = await this.articleService.getArticleDetail(id);
     if (data) {
       return {
         code: 1,
         data: {
           ...data,
         },
-        message: '查询成功'
-      }
+        message: '查询成功',
+      };
     }
     return {
       code: 0,
       data: null,
-      message: '未查询到该文章'
+      message: '未查询到该文章',
+    };
+  }
+  @ApiOperation({
+    summary: '获取树状分类列表',
+  })
+  @Post('getClassifyList')
+  async getClassifyList(@Body() body: FindClassifyThreeDto) {
+    const data = await this.articleService.getClassifyThree(body);
+    if (data) {
+      return {
+        code: 1,
+        data,
+        message: '查询成功',
+      };
     }
+    return {
+      code: 1,
+      data,
+      message: '查询成功',
+    };
   }
 }

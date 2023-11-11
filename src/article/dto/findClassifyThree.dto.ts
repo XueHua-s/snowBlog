@@ -2,21 +2,14 @@ import { PageDto } from '../../dto/PageDto.dto';
 import { IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class QueryArticlesDto extends PageDto {
+export class FindClassifyThreeDto extends PageDto {
   constructor() {
     super();
   }
   @ApiProperty({
-    title: '筛选参数',
-    required: false,
+    title: '父级分类名称',
   })
   @IsOptional()
   @IsString()
-  title: string;
-  @ApiProperty({
-    title: '分类ID',
-    required: false,
-  })
-  @IsOptional()
-  classifyId: number;
+  name: string;
 }
