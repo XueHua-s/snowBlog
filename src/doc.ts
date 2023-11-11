@@ -8,7 +8,6 @@ export const generateDocument = (app) => {
     .setVersion('V1.0')
     .addBearerAuth() // 增加鉴权功能
     .build();
-
   const document = SwaggerModule.createDocument(app, options);
   //访问文档的URL
   SwaggerModule.setup('/api/doc', app, document);

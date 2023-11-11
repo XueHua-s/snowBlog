@@ -18,7 +18,10 @@ async function bootstrap() {
     }),
   );
   app.useGlobalInterceptors(new ResponseInterceptor(ResponseOverDto));
-  generateDocument(app);
+  if (process.env.NODE_ENV !== 'production') {
+    // 接口文档
+    generateDocument(app);
+  }
   await app.listen(3001);
 }
 bootstrap();
