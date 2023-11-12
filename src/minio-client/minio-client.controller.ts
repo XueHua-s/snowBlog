@@ -21,15 +21,17 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Reflector } from '@nestjs/core';
 import JwtAuth, { JwtSwaggerAuthHeader } from "../decorator/JwtAuth";
+import { ConfigService } from "@nestjs/config";
 @ApiTags('文件')
 @Controller('minio-client')
 export class MinioClientController {
   constructor(
     private readonly minioClientService: MinioClientService,
     @Inject(Reflector) private readonly reflector: Reflector,
+    private configService: ConfigService,
   ) {}
-  // @JwtSwaggerAuthHeader()
-  // @JwtAuth()
+  @JwtSwaggerAuthHeader()
+  @JwtAuth()
   @Post('file')
   @UseInterceptors(FileInterceptor('file'))
   @ApiOperation({ summary: '文件上传,返回 url 地址' })
@@ -47,7 +49,7 @@ export class MinioClientController {
     },
   })
   async uploadMinio(@UploadedFile() file: any, @Req() req: Request) {
-    const data = await this.minioClientService.upload({ file: file }, `${req.get('host')}${req.path}`);
+    const data = await this.minioClientService.upload({ file: file }, `${this.configService.get('MINIO_CONACT')}${req.get('host')}${req.path}`);
     if (data) {
       return {
         code: 1,
