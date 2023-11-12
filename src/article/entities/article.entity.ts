@@ -19,6 +19,8 @@ export class Article {
   description: string;
   @Column({ type: 'longtext', select: false })
   content: string;
+  @Column({ type: 'longtext' })
+  cover: string;
   @ManyToOne(() => Classify, (classify) => classify.articles)
   @JoinColumn()
   classify: Partial<Classify>;
