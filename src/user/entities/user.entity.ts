@@ -10,8 +10,8 @@ export class User {
   username: string;
   @Column({ select: false })
   password: string;
-  @Column({ default: new Date().getTime().toString() })
-  createdTime: string;
+  @Column({ default: new Date().getTime(), type: 'bigint' })
+  createdTime: number;
   @OneToMany(() => Logs, (log) => log.user)
   logs: Logs[];
   @OneToMany(() => Article, (article) => article.user)

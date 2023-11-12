@@ -24,8 +24,8 @@ export class Article {
   @ManyToOne(() => Classify, (classify) => classify.articles)
   @JoinColumn()
   classify: Partial<Classify>;
-  @Column({ default: new Date().getTime().toString() })
-  createdTime: string;
+  @Column({ default: new Date().getTime(), type: 'bigint' })
+  createdTime: number;
   @ManyToOne(() => User, (user) => user.articles)
   @JoinColumn()
   user: Partial<User>;

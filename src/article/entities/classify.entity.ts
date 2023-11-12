@@ -1,5 +1,11 @@
-import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Article } from "./article.entity";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Article } from './article.entity';
 
 @Entity()
 export class Classify {
@@ -13,6 +19,6 @@ export class Classify {
   parentId: number;
   @OneToMany(() => Article, (article) => article.classify)
   articles: Article[];
-  @Column({ default: new Date().getTime().toString() })
-  createdTime: string;
+  @Column({ default: new Date().getTime(), type: 'bigint' })
+  createdTime: number;
 }
