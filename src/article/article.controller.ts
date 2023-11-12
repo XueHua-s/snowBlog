@@ -1,13 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  Query,
-  Req,
-  UsePipes,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Req } from '@nestjs/common';
 import { ArticleService } from './article.service';
 import { CreateArticleDto } from './dto/create-article.dto';
 import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
@@ -15,7 +6,7 @@ import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { PagePipe } from '../pipe/Page.pipe';
-import { FindClassifyThreeDto } from './dto/findClassifyThree.dto';
+@ApiTags('文章接口')
 @Controller('article')
 export class ArticleController {
   constructor(private readonly articleService: ArticleService) {}

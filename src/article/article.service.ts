@@ -59,9 +59,7 @@ export class ArticleService {
       .createQueryBuilder('article')
       .leftJoinAndSelect('article.user', 'user')
       .leftJoinAndSelect('article.classify', 'classify')
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      .orderBy(params.orderBy === '2' ? 'ASC' : 'DESC');
+      .orderBy('article.createdTime', params.orderBy === '2' ? 'ASC' : 'DESC');
     if (params.title) {
       createBuilder.where('article.title LIKE :title', {
         title: params.title,

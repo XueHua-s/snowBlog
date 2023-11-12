@@ -24,7 +24,7 @@ export class QueryArticlesDto extends PageDto {
   })
   @IsOptional()
   @IsString()
-  orderBy: '1';
+  orderBy: string;
   @ApiProperty({
     title: '分类ID',
     required: false,
