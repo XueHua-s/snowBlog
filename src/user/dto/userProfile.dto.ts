@@ -4,6 +4,8 @@ export class UserProfileDto {
   @ApiProperty({
     example: '',
     required: false,
+    minLength: 1,
+    maxLength: 12,
     title: '昵称',
   })
   @Length(1, 12)
@@ -23,6 +25,8 @@ export class UserProfileDto {
     example: '',
     required: false,
     title: '信息描述',
+    maxLength: 255,
+    minLength: 0,
   })
   @Length(0, 255)
   @IsString()
@@ -32,6 +36,8 @@ export class UserProfileDto {
     example: '',
     required: false,
     title: '主页地址',
+    maxLength: 255,
+    minLength: 0,
   })
   @Length(0, 255)
   @IsString()
