@@ -5,7 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn, UpdateDateColumn
 } from "typeorm";
-import { Article } from './article.entity';
+import { Article } from '../../article/entities/article.entity';
 
 @Entity()
 export class Classify {

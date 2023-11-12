@@ -5,7 +5,7 @@ import { User } from '../user/entities/user.entity';
 import { Logs } from '../userLog/entities/logs.entity';
 import { Profile } from '../user/entities/profile.entity';
 import { Article } from '../article/entities/article.entity';
-import { Classify } from '../article/entities/classify.entity';
+import { Classify } from '../classify/entities/classify.entity';
 import { Review } from '../review/entities/review.entity';
 
 export const typeOrmModule = TypeOrmModule.forRootAsync({

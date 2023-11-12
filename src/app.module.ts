@@ -7,11 +7,12 @@ import { typeOrmModule } from './TypeOrm/TypeOrm.module';
 const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
 import { LoggerModule } from 'nestjs-pino';
 import { UserModule } from './user/user.module';
-import { AuthModule } from "./auth/auth.module";
+import { AuthModule } from './auth/auth.module';
 import { LogModule } from './userLog/log.module';
 import { LogService } from './userLog/log.service';
 import { ArticleModule } from './article/article.module';
 import { ReviewModule } from './review/review.module';
+import { ClassifyModule } from './classify/classify.module';
 @Module({
   imports: [
     // 环境变量模块
@@ -57,6 +58,7 @@ import { ReviewModule } from './review/review.module';
     LogModule,
     ArticleModule,
     ReviewModule,
+    ClassifyModule,
   ],
   controllers: [AppController],
   providers: [AppService, LogService],

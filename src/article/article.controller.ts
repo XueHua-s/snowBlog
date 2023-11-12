@@ -16,7 +16,6 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { PagePipe } from '../pipe/Page.pipe';
 import { FindClassifyThreeDto } from './dto/findClassifyThree.dto';
-@ApiTags('文章接口')
 @Controller('article')
 export class ArticleController {
   constructor(private readonly articleService: ArticleService) {}
@@ -92,25 +91,6 @@ export class ArticleController {
       code: 0,
       data: null,
       message: '未查询到该文章',
-    };
-  }
-  @ApiOperation({
-    summary: '获取树状分类列表',
-  })
-  @Post('getClassifyList')
-  async getClassifyList(@Body() body: FindClassifyThreeDto) {
-    const data = await this.articleService.getClassifyThree(body);
-    if (data) {
-      return {
-        code: 1,
-        data,
-        message: '查询成功',
-      };
-    }
-    return {
-      code: 1,
-      data,
-      message: '查询成功',
     };
   }
 }

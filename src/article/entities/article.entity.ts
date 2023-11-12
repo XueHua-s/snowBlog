@@ -4,11 +4,10 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn, UpdateDateColumn
-} from "typeorm";
+} from 'typeorm';
 import { User } from '../../user/entities/user.entity';
-import { Classify } from './classify.entity';
+import { Classify } from '../../classify/entities/classify.entity';
 import { Review } from '../../review/entities/review.entity';
 
 @Entity()
