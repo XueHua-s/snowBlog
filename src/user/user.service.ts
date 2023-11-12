@@ -35,7 +35,7 @@ export class UserService {
     return null;
   }
   // 通过ID获取用户信息方法
-  async getUserInfoById(userId: number) {
+  async getUserInfoById(userId: number): Promise<User> {
     const data = await this.userRepository
       .createQueryBuilder('user')
       .leftJoinAndSelect('user.profile', 'profile')

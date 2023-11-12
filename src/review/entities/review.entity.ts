@@ -1,10 +1,11 @@
 import {
-  Column,
+  BeforeInsert,
+  Column, CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+  PrimaryGeneratedColumn
+} from "typeorm";
 import { User } from '../../user/entities/user.entity';
 import { Article } from '../../article/entities/article.entity';
 
@@ -16,10 +17,10 @@ export class Review {
   commentContent: string;
   @ManyToOne(() => User, (user) => user.reviews)
   @JoinColumn()
-  user: number;
+  user: User;
   @ManyToOne(() => Article, (article) => article.reviews)
   @JoinColumn()
-  article: number;
-  @Column({ type: 'bigint', default: new Date().getTime() })
-  createdTime: number;
+  article: Article;
+  @CreateDateColumn()
+  createdTime: Date;
 }

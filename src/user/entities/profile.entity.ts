@@ -1,9 +1,11 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { User } from './user.entity';
 @Entity()
@@ -21,4 +23,8 @@ export class Profile {
   @OneToOne(() => User)
   @JoinColumn()
   user: User;
+  @CreateDateColumn()
+  createdTime: Date;
+  @UpdateDateColumn()
+  updatedTime: Date;
 }

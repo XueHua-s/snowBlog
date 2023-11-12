@@ -1,8 +1,15 @@
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Logs } from '../../userLog/entities/logs.entity';
 import { Article } from '../../article/entities/article.entity';
 import { Profile } from './profile.entity';
-import { Review } from "../../review/entities/review.entity";
+import { Review } from '../../review/entities/review.entity';
 
 @Entity()
 export class User {
@@ -12,8 +19,8 @@ export class User {
   username: string;
   @Column({ select: false })
   password: string;
-  @Column({ default: new Date().getTime(), type: 'bigint' })
-  createdTime: number;
+  @CreateDateColumn()
+  createdTime: Date;
   @OneToMany(() => Logs, (log) => log.user)
   logs: Logs[];
   @OneToMany(() => Article, (article) => article.user)

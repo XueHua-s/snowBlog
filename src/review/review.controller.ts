@@ -4,6 +4,7 @@ import { CreateReviewDto } from './dto/create-review.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
+import { ArticleCheckReviewPageFindDto } from './dto/article-check-review-page-find.dto';
 @ApiTags('评论接口')
 @Controller('review')
 export class ReviewController {
@@ -13,7 +14,7 @@ export class ReviewController {
     summary: '登录用户发布评论',
   })
   @JwtAuth()
-  @Post('/loggedInUsersPostComments')
+  @Post('loggedInUsersPostComments')
   async loggedInUsersPostComments(
     @Body() createReviewDto: CreateReviewDto,
     @Req() req: JwtAuthRequestType,
@@ -33,6 +34,27 @@ export class ReviewController {
       code: 0,
       data: null,
       message: '发布失败',
+    };
+  }
+  @ApiOperation({
+    summary: '查询文章关联评论',
+  })
+  @Post('checkTheCommentsUnderTheArticle')
+  async checkTheCommentsUnderTheArticle(
+    @Body() body: ArticleCheckReviewPageFindDto,
+  ) {
+    const data = await this.reviewService.findArticleReview(body);
+    if (data) {
+      return {
+        code: 1,
+        data,
+        message: '查询成功',
+      };
+    }
+    return {
+      code: 0,
+      data,
+      message: '查询失败',
     };
   }
 }

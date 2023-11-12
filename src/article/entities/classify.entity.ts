@@ -1,10 +1,10 @@
 import {
-  Column,
+  Column, CreateDateColumn,
   Entity,
   JoinColumn,
   OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+  PrimaryGeneratedColumn, UpdateDateColumn
+} from "typeorm";
 import { Article } from './article.entity';
 
 @Entity()
@@ -19,6 +19,8 @@ export class Classify {
   parentId: number;
   @OneToMany(() => Article, (article) => article.classify)
   articles: Article[];
-  @Column({ default: new Date().getTime(), type: 'bigint' })
-  createdTime: number;
+  @CreateDateColumn()
+  createdTime: Date;
+  @UpdateDateColumn()
+  updateTime: Date;
 }

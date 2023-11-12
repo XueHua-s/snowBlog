@@ -1,12 +1,12 @@
 import {
-  Column,
+  Column, CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
   OneToMany,
   OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+  PrimaryGeneratedColumn, UpdateDateColumn
+} from "typeorm";
 import { User } from '../../user/entities/user.entity';
 import { Classify } from './classify.entity';
 import { Review } from '../../review/entities/review.entity';
@@ -26,8 +26,10 @@ export class Article {
   @ManyToOne(() => Classify, (classify) => classify.articles)
   @JoinColumn()
   classify: Partial<Classify>;
-  @Column({ default: new Date().getTime(), type: 'bigint' })
-  createdTime: number;
+  @CreateDateColumn()
+  createdTime: Date;
+  @UpdateDateColumn()
+  updateTime: Date;
   @ManyToOne(() => User, (user) => user.articles)
   @JoinColumn()
   user: Partial<User>;
