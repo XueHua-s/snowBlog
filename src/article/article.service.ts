@@ -39,7 +39,14 @@ export class ArticleService {
   async getArticleDetail(id: number) {
     const data = await this.articleRepository
       .createQueryBuilder('article')
-      .addSelect('article.content', 'content')
+      .select([
+        'article.id',
+        'article.title',
+        'article.content',
+        'article.createdTime',
+        'article.description',
+        'article.updateTime',
+      ])
       .leftJoinAndSelect('article.user', 'user')
       .leftJoinAndSelect('article.classify', 'classify')
       .where('article.id = :id', {
@@ -48,8 +55,8 @@ export class ArticleService {
       .getOne();
     if (data) {
       const userProfile = await this.userService.getUserInfoById(data.user.id);
-      data.user = JSON.parse(JSON.stringify(userProfile));
-      return data;
+      data.user = userProfile;
+      return JSON.parse(JSON.stringify(data));
     }
     return null;
   }
