@@ -7,6 +7,7 @@ import { Classify } from './entities/classify.entity';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { UserService } from '../user/user.service';
 import { FindClassifyThreeDto } from './dto/findClassifyThree.dto';
+import { orderBy } from "lodash";
 @Injectable()
 export class ArticleService {
   constructor(
@@ -77,7 +78,8 @@ export class ArticleService {
     const createBuilder = this.articleRepository
       .createQueryBuilder('article')
       .leftJoinAndSelect('article.user', 'user')
-      .leftJoinAndSelect('article.classify', 'classify');
+      .leftJoinAndSelect('article.classify', 'classify')
+      .orderBy('desc');
     if (params.title) {
       createBuilder.where('article.title LIKE :title', {
         title: params.title,

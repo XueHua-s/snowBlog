@@ -11,6 +11,7 @@ import { AuthModule } from "./auth/auth.module";
 import { LogModule } from './userLog/log.module';
 import { LogService } from './userLog/log.service';
 import { ArticleModule } from './article/article.module';
+import { ReviewModule } from './review/review.module';
 @Module({
   imports: [
     // 环境变量模块
@@ -55,6 +56,7 @@ import { ArticleModule } from './article/article.module';
     AuthModule,
     LogModule,
     ArticleModule,
+    ReviewModule,
   ],
   controllers: [AppController],
   providers: [AppService, LogService],
