@@ -44,7 +44,7 @@ export class MinioClientController {
     },
   })
   async uploadMinio(@UploadedFile() file: any, @Req() req: Request) {
-    const data = await this.minioClientService.upload({ file: file }, req.path);
+    const data = await this.minioClientService.upload({ file: file }, `${req.get('host')}${req.path}`);
     if (data) {
       return {
         code: 1,
