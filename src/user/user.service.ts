@@ -36,15 +36,18 @@ export class UserService {
   }
   // 通过ID获取用户信息方法
   async getUserInfoById(userId: number) {
-    const data = await this.profileRespository
-      .createQueryBuilder('profile')
+    const data = await this.userRepository
+      .createQueryBuilder('user')
+      .leftJoinAndSelect('user.profile', 'profile')
       .where('profile.userId = :userId', {
         userId,
       })
       .getOne();
     return {
       ...data,
-      userId,
+      profile: {
+        ...data.profile,
+      },
     };
   }
   // 更新用户关联信息(传userId)
@@ -54,7 +57,7 @@ export class UserService {
     if (proFileDetail) {
       // 如果有用户资料进行保存更新
       const data = await this.profileRespository.save({
-        ...proFileDetail,
+        ...proFileDetail.profile,
         ...proFile,
         userId: undefined,
         user: {

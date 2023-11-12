@@ -55,12 +55,7 @@ export class ArticleService {
       .getOne();
     if (data) {
       const userProfile = await this.userService.getUserInfoById(data.user.id);
-      data.user = {
-        ...data.user,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        userProfile,
-      };
+      data.user = JSON.parse(JSON.stringify(userProfile));
       return data;
     }
     return null;
@@ -106,9 +101,7 @@ export class ArticleService {
           this.userService
             .getUserInfoById(article.user.id)
             .then((profile: any) => {
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-expect-error
-              article.user.profile = profile;
+              article.user = profile;
             }),
         );
       }
