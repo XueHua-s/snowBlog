@@ -21,7 +21,9 @@ export class ReviewController {
   ) {
     const data = await this.reviewService.createReview({
       ...createReviewDto,
-      userId: req.user.id,
+      user: {
+        id: req.user.id,
+      },
     });
     if (data) {
       return {

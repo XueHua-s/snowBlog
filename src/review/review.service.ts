@@ -14,14 +14,9 @@ export class ReviewService {
   ) {}
   // 创建评论，需要包含用户实体
   async createReview(params: CreateReviewDto) {
-    if (!params.userId) {
-      throw new HttpException('没有用户id', 500);
-    }
     const data = await this.reviewRepository.save({
       commentContent: params.commentContent,
-      user: {
-        id: params.userId,
-      },
+      user: params.user,
       article: {
         id: params.articleId,
       },

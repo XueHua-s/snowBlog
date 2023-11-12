@@ -14,5 +14,7 @@ export class CreateReviewDto {
     title: '文章id',
   })
   articleId: number;
-  userId: number;
+  user: {
+    id: number;
+  };
 }

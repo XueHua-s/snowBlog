@@ -35,7 +35,7 @@ export class ArticleController {
     const data = await this.articleService.createArticle({
       ...createDto,
       user: {
-        id: req.user.id
+        id: req.user.id,
       },
     });
     if (data) {
