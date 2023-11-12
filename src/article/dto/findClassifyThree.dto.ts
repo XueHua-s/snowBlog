@@ -8,6 +8,7 @@ export class FindClassifyThreeDto extends PageDto {
   }
   @ApiProperty({
     title: '父级分类名称',
+    required: false,
   })
   @IsOptional()
   @IsString()
