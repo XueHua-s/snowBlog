@@ -20,6 +20,7 @@ import {
 } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Reflector } from '@nestjs/core';
+import JwtAuth from "../decorator/JwtAuth";
 @ApiTags('文件')
 @Controller('minio-client')
 export class MinioClientController {
@@ -27,6 +28,7 @@ export class MinioClientController {
     private readonly minioClientService: MinioClientService,
     @Inject(Reflector) private readonly reflector: Reflector,
   ) {}
+  @JwtAuth()
   @Post('file')
   @UseInterceptors(FileInterceptor('file'))
   @ApiOperation({ summary: '文件上传,返回 url 地址' })
