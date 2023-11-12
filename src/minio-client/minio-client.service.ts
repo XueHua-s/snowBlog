@@ -35,7 +35,7 @@ export class MinioClientService {
       file.originalname.lastIndexOf('.'),
       file.originalname.length,
     );
-    const filename = hashedFileName + ext;
+    const filename = hashedFileName + new Date().getTime() + ext;
 
     const fileName = `${filename}`;
     const fileBuffer = file.buffer;
