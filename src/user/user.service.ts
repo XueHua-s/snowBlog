@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from "@nestjs/common";
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -52,6 +52,9 @@ export class UserService {
   }
   // 更新用户关联信息(传user实体)
   async updateUserInfo(proFile: UserProfileDto) {
+    if (!/^(http|https):\/\//.test(proFile.homepage)) {
+      throw new HttpException('主页不是一个http / https', 202)
+    }
     // 获取用户信息实例
     const proFileDetail = await this.getUserInfoById(proFile.user.id);
     if (proFileDetail) {
