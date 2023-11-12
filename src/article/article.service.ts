@@ -3,7 +3,6 @@ import { CreateArticleDto } from './dto/create-article.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Article } from './entities/article.entity';
-import { Classify } from '../classify/entities/classify.entity';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { UserService } from '../user/user.service';
 import { ClassifyService } from '../classify/classify.service';
