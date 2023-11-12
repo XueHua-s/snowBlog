@@ -17,7 +17,11 @@ export class UserService {
     if (!/^[a-zA-Z0-9]+$/.test(user.username)) {
       throw new HttpException('用户名只能为数字或英文', 202);
     }
-    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$/.test(user.password)) {
+    if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$/.test(
+        user.password,
+      )
+    ) {
       throw new HttpException('密码为大小写字母, 数字, 字符: = . *混合', 202);
     }
     const hashPassword = await argon2.hash(user.password);
