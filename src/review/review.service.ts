@@ -6,7 +6,7 @@ import { Review } from './entities/review.entity';
 import { ArticleCheckReviewPageFindDto } from './dto/article-check-review-page-find.dto';
 import { UserService } from '../user/user.service';
 import { User } from '../user/entities/user.entity';
-import { ArticleService } from "../article/article.service";
+import { ArticleService } from '../article/article.service';
 @Injectable()
 export class ReviewService {
   constructor(
@@ -55,12 +55,11 @@ export class ReviewService {
   }
   // 删除评论()
   async delReview(id: number, user: Partial<User>) {
-    // 查询用户是不是文章的主人
     const reviewDetail = await this.reviewRepository
       .createQueryBuilder('review')
       .leftJoinAndSelect('review.article', 'article')
-      .where('article.id = :id', {
-        id,
+      .where('review.id = :id', {
+        id: id,
       })
       .getOne();
     // 和评论关联的文章
@@ -69,8 +68,8 @@ export class ReviewService {
     );
     // 判断用户是不是这个文章的主人
     if (canderArticle.user.id === user.id) {
-      const data = this.reviewRepository.delete(reviewDetail);
-      return data;
+      const data = this.reviewRepository.remove(reviewDetail);
+      return JSON.parse(JSON.stringify(data));
     } else {
       throw new HttpException('用户没有权限删除该评论', 401);
     }

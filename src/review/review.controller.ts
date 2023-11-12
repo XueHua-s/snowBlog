@@ -66,7 +66,7 @@ export class ReviewController {
   @JwtAuth()
   @Delete('delReview/:id')
   async delReview(@Param('id') id: number, @Req() req: JwtAuthRequestType) {
-    const data = this.reviewService.delReview(id, req.user);
+    const data = await this.reviewService.delReview(id, req.user);
     if (data) {
       return {
         code: 1,
