@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsByteLength, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateArticleDto {
   @ApiProperty({
@@ -13,6 +13,7 @@ export class CreateArticleDto {
     required: true,
     title: '文章描述',
   })
+  @IsByteLength(0, 255)
   @IsNotEmpty()
   @IsString()
   description: string;
@@ -30,6 +31,13 @@ export class CreateArticleDto {
   @IsNumber()
   @IsOptional()
   classifyId: number;
+  @ApiProperty({
+    required: false,
+    title: '文章封面(base64)',
+  })
+  @IsString()
+  @IsOptional()
+  cover: string;
   user: {
     id: number;
   };
