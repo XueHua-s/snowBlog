@@ -10,5 +10,6 @@ import { Classify } from './entities/classify.entity';
   imports: [UserModule, TypeOrmModule.forFeature([Article, Classify])],
   controllers: [ArticleController],
   providers: [ArticleService],
+  exports: [ArticleService],
 })
 export class ArticleModule {}

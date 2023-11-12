@@ -7,7 +7,6 @@ import { Classify } from './entities/classify.entity';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { UserService } from '../user/user.service';
 import { FindClassifyThreeDto } from './dto/findClassifyThree.dto';
-import { orderBy } from "lodash";
 @Injectable()
 export class ArticleService {
   constructor(
@@ -19,10 +18,6 @@ export class ArticleService {
   ) {}
   // 创建文章
   async createArticle(params: CreateArticleDto) {
-    const createBuildParams = {
-      ...params,
-      classify: undefined,
-    };
     // 分类实体
     const classifyEntity = await this.getClassify(params.classifyId);
     if (classifyEntity) {
@@ -31,8 +26,8 @@ export class ArticleService {
       }
     }
     const data = await this.articleRepository.insert({
-      ...createBuildParams,
-      classify: classifyEntity || null,
+      ...params,
+      classify: classifyEntity,
       user: {
         id: params.userId,
       },
@@ -79,7 +74,9 @@ export class ArticleService {
       .createQueryBuilder('article')
       .leftJoinAndSelect('article.user', 'user')
       .leftJoinAndSelect('article.classify', 'classify')
-      .orderBy('desc');
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      .orderBy(params.orderBy === '2' ? 'ASC' : 'DESC');
     if (params.title) {
       createBuilder.where('article.title LIKE :title', {
         title: params.title,

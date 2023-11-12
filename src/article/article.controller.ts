@@ -15,7 +15,7 @@ import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { PagePipe } from '../pipe/Page.pipe';
-import { FindClassifyThreeDto } from "./dto/findClassifyThree.dto";
+import { FindClassifyThreeDto } from './dto/findClassifyThree.dto';
 @ApiTags('文章')
 @Controller('article')
 export class ArticleController {

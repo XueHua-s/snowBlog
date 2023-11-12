@@ -1,26 +1,30 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { CreateReviewDto } from './dto/create-review.dto';
-import { UpdateReviewDto } from './dto/update-review.dto';
-
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Review } from "./entities/review.entity";
 @Injectable()
 export class ReviewService {
-  create(createReviewDto: CreateReviewDto) {
-    return 'This action adds a new review';
-  }
-
-  findAll() {
-    return `This action returns all review`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} review`;
-  }
-
-  update(id: number, updateReviewDto: UpdateReviewDto) {
-    return `This action updates a #${id} review`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} review`;
+  constructor(
+    @InjectRepository(Review)
+    private readonly reviewRepository: Repository<Review>,
+  ) {}
+  // 创建评论需包含用户id
+  async createReview(params: CreateReviewDto) {
+    if (!params.userId) {
+      throw new HttpException('没有用户id', 500);
+    }
+    const data = await this.reviewRepository.insert({
+      commentContent: params.commentContent,
+      user: {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        id: params.userId,
+      },
+    });
+    if (data) {
+      return data.raw.insertId;
+    }
+    return null;
   }
 }
