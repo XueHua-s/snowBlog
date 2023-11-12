@@ -13,6 +13,7 @@ import { LogService } from './userLog/log.service';
 import { ArticleModule } from './article/article.module';
 import { ReviewModule } from './review/review.module';
 import { ClassifyModule } from './classify/classify.module';
+import { MinioClientModule } from './minio-client/minio-client.module';
 @Module({
   imports: [
     // 环境变量模块
@@ -59,6 +60,7 @@ import { ClassifyModule } from './classify/classify.module';
     ArticleModule,
     ReviewModule,
     ClassifyModule,
+    MinioClientModule,
   ],
   controllers: [AppController],
   providers: [AppService, LogService],
