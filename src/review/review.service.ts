@@ -5,12 +5,15 @@ import { Repository } from 'typeorm';
 import { Review } from './entities/review.entity';
 import { ArticleCheckReviewPageFindDto } from './dto/article-check-review-page-find.dto';
 import { UserService } from '../user/user.service';
+import { User } from '../user/entities/user.entity';
+import { ArticleService } from "../article/article.service";
 @Injectable()
 export class ReviewService {
   constructor(
     @InjectRepository(Review)
     private readonly reviewRepository: Repository<Review>,
     private userService: UserService,
+    private articleService: ArticleService,
   ) {}
   // 创建评论，需要包含用户实体
   async createReview(params: CreateReviewDto) {
@@ -49,5 +52,27 @@ export class ReviewService {
       return JSON.parse(JSON.stringify(data));
     }
     return null;
+  }
+  // 删除评论()
+  async delReview(id: number, user: Partial<User>) {
+    // 查询用户是不是文章的主人
+    const reviewDetail = await this.reviewRepository
+      .createQueryBuilder('review')
+      .leftJoinAndSelect('review.article', 'article')
+      .where('article.id = :id', {
+        id,
+      })
+      .getOne();
+    // 和评论关联的文章
+    const canderArticle = await this.articleService.getArticleDetail(
+      reviewDetail.article.id,
+    );
+    // 判断用户是不是这个文章的主人
+    if (canderArticle.user.id === user.id) {
+      const data = this.reviewRepository.delete(reviewDetail);
+      return data;
+    } else {
+      throw new HttpException('用户没有权限删除该评论', 401);
+    }
   }
 }

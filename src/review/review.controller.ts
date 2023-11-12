@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Req } from '@nestjs/common';
+import { Controller, Post, Body, Req, Delete, Param } from '@nestjs/common';
 import { ReviewService } from './review.service';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -57,6 +57,27 @@ export class ReviewController {
       code: 0,
       data,
       message: '查询失败',
+    };
+  }
+  @ApiOperation({
+    summary: '删除评论',
+  })
+  @JwtSwaggerAuthHeader()
+  @JwtAuth()
+  @Delete('delReview/:id')
+  async delReview(@Param('id') id: number, @Req() req: JwtAuthRequestType) {
+    const data = this.reviewService.delReview(id, req.user);
+    if (data) {
+      return {
+        code: 1,
+        data,
+        message: '删除成功',
+      };
+    }
+    return {
+      code: 0,
+      data: null,
+      message: '删除失败',
     };
   }
 }
