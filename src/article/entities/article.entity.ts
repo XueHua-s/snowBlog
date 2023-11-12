@@ -3,11 +3,13 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../../user/entities/user.entity';
 import { Classify } from './classify.entity';
+import { Review } from '../../review/entities/review.entity';
 
 @Entity()
 export class Article {
@@ -29,4 +31,6 @@ export class Article {
   @ManyToOne(() => User, (user) => user.articles)
   @JoinColumn()
   user: Partial<User>;
+  @OneToMany(() => Review, (review) => review.article)
+  reviews: Review[];
 }

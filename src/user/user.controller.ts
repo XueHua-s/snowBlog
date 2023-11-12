@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Put, Req } from "@nestjs/common";
+import { Body, Controller, Get, Param, Put, Req } from '@nestjs/common';
 import { UserService } from './user.service';
 import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -50,7 +50,9 @@ export class UserController {
   ) {
     const data = await this.userService.updateUserInfo({
       ...proFile,
-      userId: req.user.id,
+      user: {
+        id: req.user.id,
+      },
     });
     if (data) {
       return {
@@ -69,7 +71,7 @@ export class UserController {
   }
   // 通过id获取用户信息
   @ApiOperation({
-    summary: '通过id获取用户信息'
+    summary: '通过id获取用户信息',
   })
   @Get('getUserInfoById/:id')
   async getUserById(@Param('id') id: number) {

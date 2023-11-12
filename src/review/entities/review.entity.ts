@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../../user/entities/user.entity';
+import { Article } from '../../article/entities/article.entity';
 
 @Entity()
 export class Review {
@@ -16,6 +17,9 @@ export class Review {
   @ManyToOne(() => User, (user) => user.reviews)
   @JoinColumn()
   user: number;
+  @ManyToOne(() => Article, (article) => article.reviews)
+  @JoinColumn()
+  article: number;
   @Column({ type: 'bigint', default: new Date().getTime() })
   createdTime: number;
 }

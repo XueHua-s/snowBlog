@@ -21,6 +21,11 @@ export class ReviewService {
         // @ts-expect-error
         id: params.userId,
       },
+      article: {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        id: params.articleId,
+      },
     });
     if (data) {
       return data.raw.insertId;

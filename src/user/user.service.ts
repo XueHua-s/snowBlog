@@ -50,37 +50,27 @@ export class UserService {
       },
     };
   }
-  // 更新用户关联信息(传userId)
+  // 更新用户关联信息(传user实体)
   async updateUserInfo(proFile: UserProfileDto) {
     // 获取用户信息实例
-    const proFileDetail = await this.getUserInfoById(proFile.userId);
+    const proFileDetail = await this.getUserInfoById(proFile.user.id);
     if (proFileDetail) {
       // 如果有用户资料进行保存更新
       const data = await this.profileRespository.save({
         ...proFileDetail.profile,
         ...proFile,
-        userId: undefined,
-        user: {
-          id: proFile.userId,
-        },
       });
       if (data) {
-        return await this.getUserInfoById(proFile.userId);
+        return await this.getUserInfoById(proFile.user.id);
       }
       return null;
     } else {
       // 没有进行数据插入
       const data = await this.profileRespository.insert({
         ...proFile,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        userId: undefined,
-        user: {
-          id: proFile.userId,
-        },
       });
       if (data) {
-        return await this.getUserInfoById(proFile.userId);
+        return await this.getUserInfoById(proFile.user.id);
       }
       return null;
     }

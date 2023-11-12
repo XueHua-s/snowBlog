@@ -30,5 +30,7 @@ export class UserProfileDto {
   })
   @IsString()
   homepage: string;
-  userId: number;
+  user: {
+    id: number;
+  };
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateArticleDto {
   @ApiProperty({
@@ -30,5 +30,7 @@ export class CreateArticleDto {
   @IsNumber()
   @IsOptional()
   classifyId: number;
-  userId: number;
+  user: {
+    id: number;
+  };
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateReviewDto {
   @IsString()
@@ -8,5 +8,11 @@ export class CreateReviewDto {
     title: '评论内容',
   })
   commentContent: string;
+  @IsNumber()
+  @IsNotEmpty()
+  @ApiProperty({
+    title: '文章id',
+  })
+  articleId: number;
   userId: number;
 }

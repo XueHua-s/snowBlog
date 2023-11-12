@@ -1,10 +1,10 @@
 import { Controller, Post, Body, Req } from '@nestjs/common';
 import { ReviewService } from './review.service';
 import { CreateReviewDto } from './dto/create-review.dto';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
-
+@ApiTags('评论接口')
 @Controller('review')
 export class ReviewController {
   constructor(private readonly reviewService: ReviewService) {}
@@ -26,7 +26,7 @@ export class ReviewController {
       return {
         code: 1,
         data,
-        message: '发布成功',
+        message: '评论成功',
       };
     }
     return {

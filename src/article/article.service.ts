@@ -28,9 +28,6 @@ export class ArticleService {
     const data = await this.articleRepository.insert({
       ...params,
       classify: classifyEntity,
-      user: {
-        id: params.userId,
-      },
     });
     if (data) {
       const rawId = data.raw.insertId;
