@@ -4,14 +4,10 @@ import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
 import { UserProfileDto } from './dto/userProfile.dto';
-@ApiTags('用户相关接口')
+@ApiTags('用户接口')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
-  @Get('hello')
-  hello() {
-    return '你好世界';
-  }
   // 获取登录人信息
   @ApiOperation({
     summary: '获取登录人信息',

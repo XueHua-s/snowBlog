@@ -16,7 +16,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { PagePipe } from '../pipe/Page.pipe';
 import { FindClassifyThreeDto } from './dto/findClassifyThree.dto';
-@ApiTags('文章')
+@ApiTags('文章接口')
 @Controller('article')
 export class ArticleController {
   constructor(private readonly articleService: ArticleService) {}
