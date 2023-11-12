@@ -16,6 +16,6 @@ export class Review {
   @ManyToOne(() => User, (user) => user.reviews)
   @JoinColumn()
   user: number;
-  @Column({ type: 'bigint', default: () => new Date().getTime() })
+  @Column({ type: 'bigint', default: new Date().getTime() })
   createdTime: number;
 }
