@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from "@nestjs/common";
+import { HttpException, Injectable } from '@nestjs/common';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -25,6 +25,16 @@ export class UserService {
       throw new HttpException('密码为大小写字母, 数字, 字符: = . *混合', 202);
     }
     const hashPassword = await argon2.hash(user.password);
+    // 判断用户是否存在（避免数据库唯一索引报错给用户，友好提示）
+    const isHaveUser = await this.userRepository
+      .createQueryBuilder('user')
+      .where('user.username = :username', {
+        username: user.username,
+      })
+      .getOne();
+    if (!isHaveUser?.id) {
+      throw new HttpException('该用户已存在', 202);
+    }
     return await this.userRepository.save({
       username: user.username,
       password: hashPassword,

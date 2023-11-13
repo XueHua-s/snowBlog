@@ -61,6 +61,7 @@ export class ReviewController {
   }
   @ApiOperation({
     summary: '删除评论',
+    description: '敏感操作, 需鉴权, 文章作者, 发布本人，对应权限可删除',
   })
   @JwtSwaggerAuthHeader()
   @JwtAuth()

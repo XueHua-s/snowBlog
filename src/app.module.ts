@@ -14,6 +14,8 @@ import { ArticleModule } from './article/article.module';
 import { ReviewModule } from './review/review.module';
 import { ClassifyModule } from './classify/classify.module';
 import { MinioClientModule } from './minio-client/minio-client.module';
+import { RolesModule } from './roles/roles.module';
+import { PermissionModule } from './permission/permission.module';
 @Module({
   imports: [
     // 环境变量模块
@@ -61,6 +63,8 @@ import { MinioClientModule } from './minio-client/minio-client.module';
     ReviewModule,
     ClassifyModule,
     MinioClientModule,
+    RolesModule,
+    PermissionModule,
   ],
   controllers: [AppController],
   providers: [AppService, LogService],

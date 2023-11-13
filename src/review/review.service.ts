@@ -67,6 +67,7 @@ export class ReviewService {
       reviewDetail.article.id,
     );
     // 判断用户是不是这个文章的主人
+    // 判断用户的角色有无这个权限
     if (canderArticle.user.id === user.id) {
       const data = this.reviewRepository.remove(reviewDetail);
       return JSON.parse(JSON.stringify(data));

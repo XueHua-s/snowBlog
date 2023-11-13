@@ -1,15 +1,16 @@
 import {
   Column,
   CreateDateColumn,
-  Entity,
+  Entity, JoinTable, ManyToMany, ManyToOne,
   OneToMany,
   OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+  PrimaryGeneratedColumn
+} from "typeorm";
 import { Logs } from '../../userLog/entities/logs.entity';
 import { Article } from '../../article/entities/article.entity';
 import { Profile } from './profile.entity';
 import { Review } from '../../review/entities/review.entity';
+import { Role } from "../../roles/entities/role.entity";
 
 @Entity()
 export class User {
@@ -29,4 +30,7 @@ export class User {
   profile: Profile;
   @OneToMany(() => Review, (review) => review.user)
   reviews: Review[];
+  @ManyToMany(() => Role, (role) => role.users)
+  @JoinTable()
+  roles: Role[];
 }

@@ -7,6 +7,8 @@ import { Profile } from '../user/entities/profile.entity';
 import { Article } from '../article/entities/article.entity';
 import { Classify } from '../classify/entities/classify.entity';
 import { Review } from '../review/entities/review.entity';
+import { Role } from "../roles/entities/role.entity";
+import { Permission } from "../permission/entities/permission.entity";
 
 export const typeOrmModule = TypeOrmModule.forRootAsync({
   imports: [ConfigModule],
@@ -18,7 +20,16 @@ export const typeOrmModule = TypeOrmModule.forRootAsync({
       username: configService.get(DBENUM.DB_USERNAME),
       password: configService.get(DBENUM.DB_PASSWORD),
       database: configService.get(DBENUM.DB_BASE),
-      entities: [User, Logs, Profile, Article, Classify, Review],
+      entities: [
+        User,
+        Logs,
+        Profile,
+        Article,
+        Classify,
+        Review,
+        Role,
+        Permission,
+      ],
       // 同步本地的schema与数据库 -> 初始化时去使用
       synchronize: true,
       logging: ['error'],
