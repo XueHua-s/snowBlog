@@ -18,8 +18,8 @@ export class RolesController {
   @ApiOperation({
     summary: '获取登录人拥有的角色',
   })
-  @Get('getUserMenus')
-  async getUserMenus(@Req() req: JwtAuthRequestType) {
+  @Get('getUserRoles')
+  async getUserRoles(@Req() req: JwtAuthRequestType) {
     const data = await this.rolesService.getUserRoles(req.user.id);
     if (data) {
       return {

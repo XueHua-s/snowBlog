@@ -32,11 +32,11 @@ export class PermissionService {
   async exampleQueryAllPermissionsOfAUser(
     userId: number,
   ): Promise<Permission[]> {
-    const userAllMenu = await this.roleService.getUserRoles(userId);
+    const userAllRole = await this.roleService.getUserRoles(userId);
     const allPermisson = [];
     const promiseAll = [];
     const hash = {};
-    for (const role of userAllMenu) {
+    for (const role of userAllRole) {
       promiseAll.push(
         this.getPermissionByRole(role.id).then((data) => {
           for (const permission of data) {
