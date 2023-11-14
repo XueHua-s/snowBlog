@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Logs } from './entities/logs.entity';
 import { PermissionService } from '../permission/permission.service';
-import { AddLogDto } from "./dto/add-log.dto";
+import { AddLogDto } from './dto/add-log.dto';
 
 @Injectable()
 export class LogService {
@@ -15,7 +15,7 @@ export class LogService {
   // 查看日志
   async getLogs(params: FindLogsQueryDto, userId: number) {
     const ability = await this.permissionService.authenticationExpose(userId);
-    if (!ability.can('logView', userId.toString)) {
+    if (!ability.can('sensitiveQuery', userId.toString)) {
       return new HttpException('您没有权限查看日志', 202);
     }
     const builderFind = this.logsRepository
