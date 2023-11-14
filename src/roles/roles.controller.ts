@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  Post,
+  Req,
+} from '@nestjs/common';
 import { RolesService } from './roles.service';
 import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -7,10 +14,14 @@ import { FindRoleListDto } from './dto/find-role-list.dto';
 import { FindRoleUsersDto } from './dto/find-role-users.dto';
 import { AllotRolePermissionDto } from './dto/allot-role-permission.dto';
 import { AllotRolePipe } from './pipe/allotRole.pipe';
+import { PermissionService } from '../permission/permission.service';
 @ApiTags('角色接口')
 @Controller('roles')
 export class RolesController {
-  constructor(private readonly rolesService: RolesService) {}
+  constructor(
+    private readonly rolesService: RolesService,
+    private readonly permissionService: PermissionService,
+  ) {}
   @JwtSwaggerAuthHeader()
   @JwtAuth()
   @ApiOperation({
@@ -18,6 +29,11 @@ export class RolesController {
   })
   @Get('getUserRoles')
   async getUserRoles(@Req() req: JwtAuthRequestType) {
+    // 验证用户敏感数据权限
+    const ablity = await this.permissionService.authenticationExpose(req.user.id);
+    if (!ablity.can('sensitiveQuery', req.user.id.toString())) {
+      return new HttpException('您没有权限查看', 202);
+    }
     const data = await this.rolesService.getUserRoles(req.user.id);
     if (data) {
       return {
@@ -81,7 +97,7 @@ export class RolesController {
   @JwtSwaggerAuthHeader()
   @JwtAuth()
   @ApiOperation({
-    summary: '为角色分类权限',
+    summary: '为角色分配权限',
     description: '敏感数据，需鉴权',
   })
   @Post('allotRolePermisson')
@@ -89,7 +105,10 @@ export class RolesController {
     @Body(AllotRolePipe) body: AllotRolePermissionDto,
     @Req() req: JwtAuthRequestType,
   ) {
-    console.log(body);
+    const ability = await this.permissionService.authenticationExpose(req.user.id);
+    if (!ability.can('allotRolePermisson', req.user.toString)) {
+      return new HttpException('您没有权限为角色分配权限', 202);
+    }
     const data = await this.rolesService.saveRolePermission(body, req.user.id);
     if (data) {
       return {
