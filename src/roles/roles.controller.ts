@@ -80,7 +80,7 @@ export class RolesController {
     if (!ablity.can('sensitiveQuery', req.user.id.toString())) {
       return new HttpException('您没有权限查看', 202);
     }
-    const data = await this.rolesService.findRoleAllUser(body, req.user.id);
+    const data = await this.rolesService.findRoleAllUser(body);
     if (data) {
       return {
         code: 1,
@@ -105,11 +105,13 @@ export class RolesController {
     @Body(AllotRolePipe) body: AllotRolePermissionDto,
     @Req() req: JwtAuthRequestType,
   ) {
-    const ability = await this.permissionService.authenticationExpose(req.user.id);
+    const ability = await this.permissionService.authenticationExpose(
+      req.user.id,
+    );
     if (!ability.can('allotRolePermisson', req.user.toString)) {
       return new HttpException('您没有权限为角色分配权限', 202);
     }
-    const data = await this.rolesService.saveRolePermission(body, req.user.id);
+    const data = await this.rolesService.saveRolePermission(body);
     if (data) {
       return {
         code: 1,
