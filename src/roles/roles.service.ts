@@ -1,4 +1,4 @@
-import { HttpException, Inject, Injectable } from "@nestjs/common";
+import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Role } from './entities/role.entity';
@@ -22,7 +22,7 @@ export class RolesService {
       })
       .getOne();
     if (data) {
-      return data.roles.map((item) => ({ ...item }));
+      return data.roles.map((item) => ({ ...item, users: { ...item.users } }));
     }
     return null;
   }
@@ -57,7 +57,10 @@ export class RolesService {
       .limit(query.size || 10)
       .getMany();
     if (data) {
-      return data.map((i) => ({ ...i }));
+      return data.map((i) => ({
+        ...i,
+        users: [...i.users.map((s) => ({ ...s }))],
+      }));
     }
     return [];
   }

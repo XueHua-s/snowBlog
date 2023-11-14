@@ -29,11 +29,6 @@ export class RolesController {
   })
   @Get('getUserRoles')
   async getUserRoles(@Req() req: JwtAuthRequestType) {
-    // 验证用户敏感数据权限
-    const ablity = await this.permissionService.authenticationExpose(req.user.id);
-    if (!ablity.can('sensitiveQuery', req.user.id.toString())) {
-      return new HttpException('您没有权限查看', 202);
-    }
     const data = await this.rolesService.getUserRoles(req.user.id);
     if (data) {
       return {
@@ -80,6 +75,11 @@ export class RolesController {
     @Body() body: FindRoleUsersDto,
     @Req() req: JwtAuthRequestType,
   ) {
+    // 验证用户敏感数据权限
+    const ablity = await this.permissionService.authenticationExpose(req.user.id);
+    if (!ablity.can('sensitiveQuery', req.user.id.toString())) {
+      return new HttpException('您没有权限查看', 202);
+    }
     const data = await this.rolesService.findRoleAllUser(body, req.user.id);
     if (data) {
       return {

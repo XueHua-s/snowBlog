@@ -32,7 +32,7 @@ export class UserService {
         username: user.username,
       })
       .getOne();
-    if (!isHaveUser?.id) {
+    if (isHaveUser?.id) {
       throw new HttpException('该用户已存在', 202);
     }
     return await this.userRepository.save({
