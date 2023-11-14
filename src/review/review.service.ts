@@ -9,6 +9,7 @@ import { User } from '../user/entities/user.entity';
 import { ArticleService } from '../article/article.service';
 import { PermissionModule } from "../permission/permission.module";
 import { PermissionService } from "../permission/permission.service";
+import { LogService } from "../userLog/log.service";
 @Injectable()
 export class ReviewService {
   constructor(
@@ -17,6 +18,7 @@ export class ReviewService {
     private userService: UserService,
     private articleService: ArticleService,
     private permissionService: PermissionService,
+    private logService: LogService,
   ) {}
   // 创建评论，需要包含用户实体
   async createReview(params: CreateReviewDto) {
@@ -73,10 +75,24 @@ export class ReviewService {
     // 判断用户的角色有无这个权限
     const ability = await this.permissionService.authenticationExpose(user.id)
     if (ability.can('reviewDel', user.id.toString)) {
-      const data = this.reviewRepository.remove(reviewDetail);
+      const data = await this.reviewRepository.remove(reviewDetail);
+      await this.logService.addLog({
+        action: '删除评论',
+        record: `管理员删除了id为${id}的评论`,
+        user: {
+          id,
+        },
+      });
       return JSON.parse(JSON.stringify(data));
     } else if (canderArticle.user.id === user.id) {
-      const data = this.reviewRepository.remove(reviewDetail);
+      const data = await this.reviewRepository.remove(reviewDetail);
+      await this.logService.addLog({
+        action: '删除评论',
+        record: `文章发布者删除了id为${id}的评论`,
+        user: {
+          id,
+        },
+      });
       return JSON.parse(JSON.stringify(data));
     } else {
       throw new HttpException('用户没有权限删除该评论', 401);

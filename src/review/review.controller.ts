@@ -5,6 +5,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
 import { ArticleCheckReviewPageFindDto } from './dto/article-check-review-page-find.dto';
+import { LogService } from '../userLog/log.service';
 @ApiTags('评论接口')
 @Controller('review')
 export class ReviewController {

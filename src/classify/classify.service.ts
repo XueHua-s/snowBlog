@@ -1,13 +1,19 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable, Post } from '@nestjs/common';
 import { FindClassifyThreeDto } from '../article/dto/findClassifyThree.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Classify } from './entities/classify.entity';
 import { Repository } from 'typeorm';
+import { CreateClassifyDto } from './dto/create-classify.dto';
+import { PermissionService } from '../permission/permission.service';
+import { UpdateClassifyDto } from './dto/update-classify.dto';
+import { LogService } from '../userLog/log.service';
 @Injectable()
 export class ClassifyService {
   constructor(
     @InjectRepository(Classify)
     private readonly classifyRepository: Repository<Classify>,
+    private readonly permissionService: PermissionService,
+    private readonly logService: LogService,
   ) {}
   // 查询树状分类列表
   async getClassifyThree(params: FindClassifyThreeDto) {
@@ -81,6 +87,34 @@ export class ClassifyService {
       })
       .getOne();
     if (data) {
+      return data;
+    }
+  }
+  // 新建分类
+  async addClassify(params: CreateClassifyDto, userId: number) {
+    const ablity = await this.permissionService.authenticationExpose(userId);
+    if (!ablity.can('classify', userId.toString)) {
+      return new HttpException('您没权限设置分类', 202);
+    }
+    const data = await this.classifyRepository.save(params);
+    if (data) {
+      if (params.id) {
+        await this.logService.addLog({
+          action: '添加分类',
+          record: `添加的id为${data.id}`,
+          user: {
+            id: userId,
+          },
+        });
+      } else {
+        await this.logService.addLog({
+          action: '更新分类',
+          record: `添加的id为${data.id}, ${params.name}变成了${data.name}`,
+          user: {
+            id: userId,
+          },
+        });
+      }
       return data;
     }
   }

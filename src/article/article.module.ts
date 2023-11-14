@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Article } from './entities/article.entity';
 import { ClassifyModule } from '../classify/classify.module';
 import { PermissionModule } from "../permission/permission.module";
+import { LogModule } from "../userLog/log.module";
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { PermissionModule } from "../permission/permission.module";
     forwardRef(() => ClassifyModule),
     TypeOrmModule.forFeature([Article]),
     PermissionModule,
+    LogModule,
   ],
   controllers: [ArticleController],
   providers: [ArticleService],

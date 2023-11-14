@@ -7,8 +7,8 @@ import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { UserService } from '../user/user.service';
 import { ClassifyService } from '../classify/classify.service';
 import { UpdateArticleDto } from './dto/update-article.dto';
-import { PermissionModule } from "../permission/permission.module";
-import { PermissionService } from "../permission/permission.service";
+import { PermissionService } from '../permission/permission.service';
+import { LogService } from '../userLog/log.service';
 @Injectable()
 export class ArticleService {
   constructor(
@@ -16,7 +16,8 @@ export class ArticleService {
     private readonly articleRepository: Repository<Article>,
     private userService: UserService,
     private classifyService: ClassifyService,
-    private permissionService: PermissionService
+    private permissionService: PermissionService,
+    private logService: LogService,
   ) {}
   // 创建文章
   async createArticle(params: CreateArticleDto) {
@@ -35,6 +36,13 @@ export class ArticleService {
     });
     if (data) {
       const rawId = data.raw.insertId;
+      await this.logService.addLog({
+        action: '新增文章',
+        record: `新增文章id为: ${rawId}`,
+        user: {
+          id: params.user.id,
+        },
+      });
       return rawId;
     }
     return null;
@@ -56,6 +64,13 @@ export class ArticleService {
       return new HttpException('您没有权限更新文章', 202);
     }
     const data = await this.articleRepository.save(params);
+    await this.logService.addLog({
+      action: '更新文章',
+      record: `更新文章id为: ${data.id}`,
+      user: {
+        id: userId,
+      },
+    });
     return data;
   }
   // 文章删除
@@ -70,6 +85,13 @@ export class ArticleService {
     }
     const data = await this.articleRepository.remove(articleDetail);
     if (data) {
+      await this.logService.addLog({
+        action: '删除文章',
+        record: `删除文章id为: ${userId}`,
+        user: {
+          id: userId,
+        },
+      });
       return data;
     }
     return null;

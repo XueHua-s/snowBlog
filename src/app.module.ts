@@ -16,6 +16,7 @@ import { ClassifyModule } from './classify/classify.module';
 import { MinioClientModule } from './minio-client/minio-client.module';
 import { RolesModule } from './roles/roles.module';
 import { PermissionModule } from './permission/permission.module';
+import { LogController } from './userLog/log.controller';
 @Module({
   imports: [
     // 环境变量模块
@@ -67,6 +68,6 @@ import { PermissionModule } from './permission/permission.module';
     PermissionModule,
   ],
   controllers: [AppController],
-  providers: [AppService, LogService],
+  providers: [AppService],
 })
 export class AppModule {}
