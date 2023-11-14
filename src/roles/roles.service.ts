@@ -46,7 +46,7 @@ export class RolesService {
     return [];
   }
   // 查询角色下所有用户
-  async findRoleAllUser(query: FindRoleUsersDto, userId: number) {
+  async findRoleAllUser(query: FindRoleUsersDto) {
     const data = await this.roleRepository
       .createQueryBuilder('role')
       .leftJoinAndSelect('role.users', 'users')
@@ -65,7 +65,7 @@ export class RolesService {
     return [];
   }
   // 保存角色权限
-  async saveRolePermission(params: AllotRolePermissionDto, userId: number) {
+  async saveRolePermission(params: AllotRolePermissionDto) {
     const data = await this.roleRepository.save(params);
     if (data) {
       return {
