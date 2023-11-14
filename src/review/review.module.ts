@@ -6,9 +6,10 @@ import { Review } from './entities/review.entity';
 import { UserModule } from '../user/user.module';
 import { Article } from '../article/entities/article.entity';
 import { ArticleModule } from "../article/article.module";
+import { PermissionModule } from "../permission/permission.module";
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Review]), UserModule, ArticleModule],
+  imports: [TypeOrmModule.forFeature([Review]), UserModule, ArticleModule, PermissionModule],
   controllers: [ReviewController],
   providers: [ReviewService],
 })

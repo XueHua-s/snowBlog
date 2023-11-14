@@ -11,13 +11,9 @@ export class Logs {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  path: string;
+  action: string;
   @Column()
-  method: string;
-  @Column()
-  data: string;
-  @Column()
-  result: number;
+  record: string;
   @ManyToOne(() => User, (user) => user.logs)
   @JoinColumn({
     foreignKeyConstraintName: '日志创建用户',

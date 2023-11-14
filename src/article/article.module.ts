@@ -5,12 +5,14 @@ import { UserModule } from '../user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Article } from './entities/article.entity';
 import { ClassifyModule } from '../classify/classify.module';
+import { PermissionModule } from "../permission/permission.module";
 
 @Module({
   imports: [
     UserModule,
     forwardRef(() => ClassifyModule),
     TypeOrmModule.forFeature([Article]),
+    PermissionModule,
   ],
   controllers: [ArticleController],
   providers: [ArticleService],

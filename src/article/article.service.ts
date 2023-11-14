@@ -6,6 +6,9 @@ import { Article } from './entities/article.entity';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { UserService } from '../user/user.service';
 import { ClassifyService } from '../classify/classify.service';
+import { UpdateArticleDto } from './dto/update-article.dto';
+import { PermissionModule } from "../permission/permission.module";
+import { PermissionService } from "../permission/permission.service";
 @Injectable()
 export class ArticleService {
   constructor(
@@ -13,6 +16,7 @@ export class ArticleService {
     private readonly articleRepository: Repository<Article>,
     private userService: UserService,
     private classifyService: ClassifyService,
+    private permissionService: PermissionService
   ) {}
   // 创建文章
   async createArticle(params: CreateArticleDto) {
@@ -32,6 +36,41 @@ export class ArticleService {
     if (data) {
       const rawId = data.raw.insertId;
       return rawId;
+    }
+    return null;
+  }
+  // 更新文章(发布人 / 权限人员更新文章)
+  async updateArticle(params: UpdateArticleDto, userId: number) {
+    const articleDetail = await this.articleRepository
+      .createQueryBuilder('article')
+      .leftJoinAndSelect('article.user', 'user')
+      .where('article.id = :id', {
+        id: params.id,
+      })
+      .getOne();
+    const ability = await this.permissionService.authenticationExpose(userId);
+    if (articleDetail.user.id !== userId) {
+      return new HttpException('您没有权限更新文章', 202);
+    } else if (!ability.can('examine', userId.toString)) {
+      // 判断用户有无审核文章权限, 无报错
+      return new HttpException('您没有权限更新文章', 202);
+    }
+    const data = await this.articleRepository.save(params);
+    return data;
+  }
+  // 文章删除
+  async delArticle(articleId: number, userId: number) {
+    const articleDetail = await this.getArticleDetail(articleId);
+    const ability = await this.permissionService.authenticationExpose(userId);
+    if (articleDetail.user.id !== userId) {
+      return new HttpException('您没有权限删除文章', 202);
+    } else if (!ability.can('examine', userId.toString)) {
+      // 判断用户有无审核文章权限, 无报错
+      return new HttpException('您没有权限删除文章', 202);
+    }
+    const data = await this.articleRepository.remove(articleDetail);
+    if (data) {
+      return data;
     }
     return null;
   }
