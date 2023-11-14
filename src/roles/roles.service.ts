@@ -1,13 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Inject, Injectable } from "@nestjs/common";
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Role } from './entities/role.entity';
 import { User } from '../user/entities/user.entity';
 import { FindRoleListDto } from './dto/find-role-list.dto';
 import { FindRoleUsersDto } from './dto/find-role-users.dto';
+import { AllotRolePermissionDto } from './dto/allot-role-permission.dto';
+import { PermissionService } from '../permission/permission.service';
 @Injectable()
 export class RolesService {
   constructor(
+    private readonly permissionService: PermissionService,
     @InjectRepository(Role) private readonly roleRepository: Repository<Role>,
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
@@ -45,7 +48,12 @@ export class RolesService {
     return [];
   }
   // 查询角色下所有用户
-  async findRoleAllUser(query: FindRoleUsersDto) {
+  async findRoleAllUser(query: FindRoleUsersDto, userId: number) {
+    // 验证用户敏感数据权限
+    const ablity = await this.permissionService.authenticationExpose(userId);
+    if (!ablity.can('sensitiveQuery', userId.toString())) {
+      return new HttpException('您没有权限查看', 202);
+    }
     const data = await this.roleRepository
       .createQueryBuilder('role')
       .leftJoinAndSelect('role.users', 'users')
@@ -59,5 +67,19 @@ export class RolesService {
       return data.map((i) => ({ ...i }));
     }
     return [];
+  }
+  // 保存角色权限
+  async saveRolePermission(params: AllotRolePermissionDto, userId: number) {
+    const ability = await this.permissionService.authenticationExpose(userId);
+    if (!ability.can('allotRolePermisson', userId.toString)) {
+      return new HttpException('您没有权限为角色分配权限', 202);
+    }
+    const data = await this.roleRepository.save(params);
+    if (data) {
+      return {
+        ...data,
+      };
+    }
+    return null;
   }
 }

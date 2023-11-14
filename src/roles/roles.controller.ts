@@ -4,15 +4,13 @@ import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
 import { FindRoleListDto } from './dto/find-role-list.dto';
-import { PermissionService } from '../permission/permission.service';
 import { FindRoleUsersDto } from './dto/find-role-users.dto';
+import { AllotRolePermissionDto } from './dto/allot-role-permission.dto';
+import { AllotRolePipe } from './pipe/allotRole.pipe';
 @ApiTags('角色接口')
 @Controller('roles')
 export class RolesController {
-  constructor(
-    private readonly rolesService: RolesService,
-    private readonly permissionService: PermissionService,
-  ) {}
+  constructor(private readonly rolesService: RolesService) {}
   @JwtSwaggerAuthHeader()
   @JwtAuth()
   @ApiOperation({
@@ -66,29 +64,44 @@ export class RolesController {
     @Body() body: FindRoleUsersDto,
     @Req() req: JwtAuthRequestType,
   ) {
-    // 验证用户敏感数据权限
-    const ablity = await this.permissionService.authenticationExpose(
-      req.user.id,
-    );
-    if (ablity.can('sensitiveQuery', req.user.id.toString())) {
-      const data = await this.rolesService.findRoleAllUser(body);
-      if (data) {
-        return {
-          code: 1,
-          data,
-          message: '查询成功',
-        };
-      }
+    const data = await this.rolesService.findRoleAllUser(body, req.user.id);
+    if (data) {
       return {
-        code: 0,
-        data: null,
-        message: '查询失败',
+        code: 1,
+        data,
+        message: '查询成功',
       };
     }
     return {
       code: 0,
       data: null,
-      message: '您没有查看敏感数据的权限',
+      message: '查询失败',
+    };
+  }
+  @JwtSwaggerAuthHeader()
+  @JwtAuth()
+  @ApiOperation({
+    summary: '为角色分类权限',
+    description: '敏感数据，需鉴权',
+  })
+  @Post('allotRolePermisson')
+  async allotRolePermisson(
+    @Body(AllotRolePipe) body: AllotRolePermissionDto,
+    @Req() req: JwtAuthRequestType,
+  ) {
+    console.log(body);
+    const data = await this.rolesService.saveRolePermission(body, req.user.id);
+    if (data) {
+      return {
+        code: 1,
+        data: data,
+        message: '分配成功',
+      };
+    }
+    return {
+      code: 0,
+      data: null,
+      message: '失败',
     };
   }
 }

@@ -10,8 +10,6 @@ import { defineAbility } from '@casl/ability';
 export class PermissionService {
   constructor(
     @InjectRepository(Role) private readonly roleRepository: Repository<Role>,
-    @InjectRepository(Permission)
-    private readonly permissionRepository: Repository<Permission>,
     private roleService: RolesService,
   ) {}
   // 通过角色id获取权限
