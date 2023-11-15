@@ -143,6 +143,11 @@ export class ArticleService {
         id: params.classifyId,
       });
     }
+    if (params.pub !== undefined && params.pub !== null) {
+      createBuilder.andWhere('article.pub = :pub', {
+        pub: params.pub,
+      });
+    }
     const total = await createBuilder.getCount();
     const data = await createBuilder
       .offset(((params.current || 1) - 1) * (params.size || 10))
@@ -174,6 +179,9 @@ export class ArticleService {
         total: total,
       };
     }
-    return null;
+    if (!data) {
+      return null;
+    }
+    return data;
   }
 }
