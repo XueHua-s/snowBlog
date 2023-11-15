@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
   Param,
   Post,
   Put,
@@ -17,10 +18,16 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { QueryArticlesDto } from './dto/queryArticles.dto';
 import { PagePipe } from '../pipe/Page.pipe';
 import { UpdateArticleDto } from './dto/update-article.dto';
+import { defineAbility } from '@casl/ability';
+import { PermissionService } from '../permission/permission.service';
+import { ReviewAnArticleParamsDto } from './dto/reviewAnArticleParams.dto';
 @ApiTags('文章接口')
 @Controller('article')
 export class ArticleController {
-  constructor(private readonly articleService: ArticleService) {}
+  constructor(
+    private readonly articleService: ArticleService,
+    private readonly permissionService: PermissionService,
+  ) {}
   // 发布文章
   @JwtSwaggerAuthHeader()
   @JwtAuth()
@@ -32,7 +39,6 @@ export class ArticleController {
     @Body() createDto: CreateArticleDto,
     @Req() req: JwtAuthRequestType,
   ) {
-    // console.log(createDto, 'createDto');
     const data = await this.articleService.createArticle({
       ...createDto,
       user: {
@@ -80,7 +86,11 @@ export class ArticleController {
   })
   @Get('getArticles')
   async getArticles(@Query(PagePipe) query: QueryArticlesDto) {
-    const data = await this.articleService.getArticles(query);
+    const data = await this.articleService.getArticles({
+      ...query,
+      // 审核通过的
+      pub: 1,
+    });
     if (data) {
       return {
         code: 1,
@@ -92,6 +102,68 @@ export class ArticleController {
       code: 0,
       data: null,
       message: '查询失败',
+    };
+  }
+  // 获取文章审核列表
+  @JwtSwaggerAuthHeader()
+  @JwtAuth()
+  @ApiOperation({
+    summary: '获取文章审核列表',
+    description: '敏感操作，需鉴权',
+  })
+  @Get('getArticleReviewList')
+  async getArticleReviewList(
+    @Query(PagePipe) query: QueryArticlesDto,
+    @Req() req: JwtAuthRequestType,
+  ) {
+    const ability = await this.permissionService.authenticationExpose(
+      req.user.id,
+    );
+    if (!ability.can('examine', req.user.id.toString())) {
+      return new HttpException('您没有文章审核权限', 202);
+    }
+    const data = await this.articleService.getArticles({
+      ...query,
+      // 未审核的
+      pub: 0,
+    });
+    if (data) {
+      return {
+        code: 1,
+        data,
+        message: '查询成功',
+      };
+    }
+    return {
+      code: 0,
+      data: null,
+      message: '查询失败',
+    };
+  }
+  // 通过 / 拒绝文章
+  @ApiOperation({
+    summary: '审批文章',
+    description: '敏感操作，需鉴权',
+  })
+  @JwtSwaggerAuthHeader()
+  @JwtAuth()
+  @Post('reviewAnArticle')
+  async reviewAnArticle(
+    @Body() body: ReviewAnArticleParamsDto,
+    @Req() req: JwtAuthRequestType,
+  ) {
+    const data = await this.articleService.updateArticle(body, req.user.id);
+    if (data) {
+      return {
+        code: 1,
+        data,
+        message: body.pub === 1 ? '审核成功' : '拒绝成功',
+      };
+    }
+    return {
+      code: 0,
+      data: null,
+      message: '失败',
     };
   }
   @JwtSwaggerAuthHeader()

@@ -21,6 +21,9 @@ export class ArticleService {
   ) {}
   // 创建文章
   async createArticle(params: CreateArticleDto) {
+    const ability = await this.permissionService.authenticationExpose(
+      params.user.id,
+    );
     // 分类实体
     const classifyEntity = await this.classifyService.getClassify(
       params.classifyId,
@@ -33,6 +36,8 @@ export class ArticleService {
     const data = await this.articleRepository.insert({
       ...params,
       classify: classifyEntity,
+      // 有审核权限默认为发布
+      pub: ability.can('examine', params.user.id.toString()) ? 1 : 0,
     });
     if (data) {
       const rawId = data.raw.insertId;
@@ -48,7 +53,7 @@ export class ArticleService {
     return null;
   }
   // 更新文章(发布人 / 权限人员更新文章)
-  async updateArticle(params: UpdateArticleDto, userId: number) {
+  async updateArticle(params: Partial<UpdateArticleDto>, userId: number) {
     const articleDetail = await this.articleRepository
       .createQueryBuilder('article')
       .leftJoinAndSelect('article.user', 'user')

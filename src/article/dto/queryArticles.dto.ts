@@ -31,4 +31,6 @@ export class QueryArticlesDto extends PageDto {
   })
   @IsOptional()
   classifyId: number;
+  // 不可见, 客户端不可传
+  pub: number;
 }

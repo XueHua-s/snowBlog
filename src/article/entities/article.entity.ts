@@ -25,6 +25,9 @@ export class Article {
   @ManyToOne(() => Classify, (classify) => classify.articles)
   @JoinColumn()
   classify: Partial<Classify>;
+  // 文章发布状态(0, 未发布, 1已发布)
+  @Column({ default: 0 })
+  pub: number;
   @CreateDateColumn()
   createdTime: Date;
   @UpdateDateColumn()
