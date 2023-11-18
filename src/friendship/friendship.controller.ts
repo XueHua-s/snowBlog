@@ -1,11 +1,19 @@
-import { Controller, Post, Body, Req, Put, Delete, Param } from "@nestjs/common";
+import {
+  Controller,
+  Post,
+  Body,
+  Req,
+  Put,
+  Delete,
+  Param,
+} from '@nestjs/common';
 import { FriendshipService } from './friendship.service';
 import { CreateFriendshipDto } from './dto/create-friendship.dto';
 import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
-import { UpdateFriendshipDto } from "./dto/update-friendship.dto";
-import { QueryFriendshipDto } from "./dto/query-friendship.dto";
+import { UpdateFriendshipDto } from './dto/update-friendship.dto';
+import { QueryFriendshipDto } from './dto/query-friendship.dto';
 @ApiTags('友链接口')
 @Controller('friendship')
 export class FriendshipController {
@@ -19,7 +27,7 @@ export class FriendshipController {
     @Body() createFriendshipDto: CreateFriendshipDto,
     @Req() req: JwtAuthRequestType,
   ) {
-    const data = await this.friendshipService.addFriendship({
+    const data = await this.friendshipService.addfriendship({
       ...createFriendshipDto,
       user: req.user,
     });
@@ -45,7 +53,7 @@ export class FriendshipController {
     @Body() createFriendshipDto: UpdateFriendshipDto,
     @Req() req: JwtAuthRequestType,
   ) {
-    const data = await this.friendshipService.addFriendship({
+    const data = await this.friendshipService.addfriendship({
       ...createFriendshipDto,
       user: req.user,
     });

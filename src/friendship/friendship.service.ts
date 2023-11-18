@@ -14,7 +14,7 @@ export class FriendshipService {
     private readonly permissionService: PermissionService,
   ) {}
   // 新增
-  async friendship(createFriendshipDto: CreateFriendshipDto) {
+  async addfriendship(createFriendshipDto: CreateFriendshipDto) {
     // 鉴权
     const ability = await this.permissionService.authenticationExpose(
       createFriendshipDto.user.id,
