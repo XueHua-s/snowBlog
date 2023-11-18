@@ -7,8 +7,9 @@ import { Profile } from '../user/entities/profile.entity';
 import { Article } from '../article/entities/article.entity';
 import { Classify } from '../classify/entities/classify.entity';
 import { Review } from '../review/entities/review.entity';
-import { Role } from "../roles/entities/role.entity";
-import { Permission } from "../permission/entities/permission.entity";
+import { Role } from '../roles/entities/role.entity';
+import { Permission } from '../permission/entities/permission.entity';
+import { Friendship } from '../friendship/entities/friendship.entity';
 
 export const typeOrmModule = TypeOrmModule.forRootAsync({
   imports: [ConfigModule],
@@ -29,6 +30,7 @@ export const typeOrmModule = TypeOrmModule.forRootAsync({
         Review,
         Role,
         Permission,
+        Friendship,
       ],
       // 同步本地的schema与数据库 -> 初始化时去使用
       synchronize: true,

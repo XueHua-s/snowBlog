@@ -17,6 +17,7 @@ import { MinioClientModule } from './minio-client/minio-client.module';
 import { RolesModule } from './roles/roles.module';
 import { PermissionModule } from './permission/permission.module';
 import { LogController } from './userLog/log.controller';
+import { FriendshipModule } from './friendship/friendship.module';
 @Module({
   imports: [
     // 环境变量模块
@@ -66,6 +67,7 @@ import { LogController } from './userLog/log.controller';
     MinioClientModule,
     RolesModule,
     PermissionModule,
+    FriendshipModule,
   ],
   controllers: [AppController],
   providers: [AppService],

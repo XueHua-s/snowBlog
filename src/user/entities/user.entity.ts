@@ -1,16 +1,20 @@
 import {
   Column,
   CreateDateColumn,
-  Entity, JoinTable, ManyToMany, ManyToOne,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
   OneToMany,
   OneToOne,
-  PrimaryGeneratedColumn
-} from "typeorm";
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Logs } from '../../userLog/entities/logs.entity';
 import { Article } from '../../article/entities/article.entity';
 import { Profile } from './profile.entity';
 import { Review } from '../../review/entities/review.entity';
-import { Role } from "../../roles/entities/role.entity";
+import { Role } from '../../roles/entities/role.entity';
+import { Friendship } from '../../friendship/entities/friendship.entity';
 
 @Entity()
 export class User {
@@ -33,4 +37,6 @@ export class User {
   @ManyToMany(() => Role, (role) => role.users)
   @JoinTable()
   roles: Role[];
+  @OneToMany(() => Friendship, (friendship) => friendship.user)
+  friendships: Friendship[];
 }
