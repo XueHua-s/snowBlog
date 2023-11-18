@@ -14,12 +14,12 @@ export class FriendshipService {
     private readonly permissionService: PermissionService,
   ) {}
   // 新增
-  async addFriendship(createFriendshipDto: CreateFriendshipDto) {
+  async friendship(createFriendshipDto: CreateFriendshipDto) {
     // 鉴权
     const ability = await this.permissionService.authenticationExpose(
       createFriendshipDto.user.id,
     );
-    if (!ability.can('addFriendship', createFriendshipDto.user.id.toString())) {
+    if (!ability.can('friendship', createFriendshipDto.user.id.toString())) {
       throw new HttpException('您没有管理友链的权限', 202);
     }
     const data = await this.friendshipRepository.save(createFriendshipDto);
@@ -54,7 +54,7 @@ export class FriendshipService {
   async delFriendship(id: number, userId: number) {
     // 鉴权
     const ability = await this.permissionService.authenticationExpose(userId);
-    if (!ability.can('addFriendship', userId.toString())) {
+    if (!ability.can('friendship', userId.toString())) {
       throw new HttpException('您没有管理友链的权限', 202);
     }
     const data = await this.friendshipRepository.remove({
