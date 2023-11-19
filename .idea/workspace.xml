@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e1526579-ec02-4654-b04a-65c1304766b5" name="更改" comment="调整项目目录结构" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2Y0hGeTeXGIxNWvP5vJyQTwtqxb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "development",
+    "last_opened_file_path": "F:/code/js/snowBlog/api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "F:\\code\\js\\snowBlog\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\code\js\snow-blog-template\src\userLog" />
+      <recent name="F:\code\js\snow-blog-template\src\auth" />
+      <recent name="F:\code\js\snow-blog-template\src\interceptors" />
+      <recent name="F:\code\js\snow-blog-template\src\filters" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\code\js\snowBlog\src\userLog" />
+      <recent name="F:\code\js\snowBlog\src\classify\entities" />
+      <recent name="F:\code\js\snow-blog-template\src\userLog" />
+      <recent name="F:\code\js\snow-blog-template\src\userLog\entities" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.start:dev (1)">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build:uat" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build:uat" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start:dev (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/api/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start:dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start:prod" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:prod" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start:dev (1)" />
+        <item itemvalue="npm.start:dev" />
+        <item itemvalue="npm.build:uat" />
+        <item itemvalue="npm.start:prod" />
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="e1526579-ec02-4654-b04a-65c1304766b5" name="更改" comment="" />
+      <created>1699668310144</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699668310144</updated>
+      <workItem from="1699668312557" duration="7907000" />
+      <workItem from="1699676701190" duration="38069000" />
+      <workItem from="1699749852156" duration="57000" />
+      <workItem from="1699758944412" duration="14932000" />
+      <workItem from="1699869676621" duration="9571000" />
+      <workItem from="1699958160650" duration="13024000" />
+      <workItem from="1700051542683" duration="2551000" />
+      <workItem from="1700276314814" duration="2618000" />
+      <workItem from="1700321963374" duration="227000" />
+      <workItem from="1700327157039" duration="131000" />
+      <workItem from="1700327475196" duration="109000" />
+      <workItem from="1700368690443" duration="491000" />
+      <workItem from="1700369252016" duration="1531000" />
+    </task>
+    <task id="LOCAL-00001" summary="判断环境">
+      <option name="closed" value="true" />
+      <created>1699677016320</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699677016320</updated>
+    </task>
+    <task id="LOCAL-00002" summary="编写用户创建文章">
+      <option name="closed" value="true" />
+      <created>1699693093835</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1699693093835</updated>
+    </task>
+    <task id="LOCAL-00003" summary="编写用户创建文章">
+      <option name="closed" value="true" />
+      <created>1699693120168</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699693120168</updated>
+    </task>
+    <task id="LOCAL-00004" summary="编写用户创建文章">
+      <option name="closed" value="true" />
+      <created>1699701492799</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699701492799</updated>
+    </task>
+    <task id="LOCAL-00005" summary="编写用户创建文章">
+      <option name="closed" value="true" />
+      <created>1699704489157</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699704489157</updated>
+    </task>
+    <task id="LOCAL-00006" summary="编写用户创建文章">
+      <option name="closed" value="true" />
+      <created>1699704514922</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699704514922</updated>
+    </task>
+    <task id="LOCAL-00007" summary="编写用户创建文章">
+      <option name="closed" value="true" />
+      <created>1699706396691</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699706396691</updated>
+    </task>
+    <task id="LOCAL-00008" summary="编写用户创建文章">
+      <option name="closed" value="true" />
+      <created>1699759233738</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699759233738</updated>
+    </task>
+    <task id="LOCAL-00009" summary="编写用户创建文章">
+      <option name="closed" value="true" />
+      <created>1699759489622</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699759489622</updated>
+    </task>
+    <task id="LOCAL-00010" summary="优化插入逻辑和增加评论接口">
+      <option name="closed" value="true" />
+      <created>1699761483862</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699761483862</updated>
+    </task>
+    <task id="LOCAL-00011" summary="优化接口逻辑">
+      <option name="closed" value="true" />
+      <created>1699762417803</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1699762417803</updated>
+    </task>
+    <task id="LOCAL-00012" summary="优化代码逻辑">
+      <option name="closed" value="true" />
+      <created>1699764761138</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1699764761138</updated>
+    </task>
+    <task id="LOCAL-00013" summary="优化代码逻辑">
+      <option name="closed" value="true" />
+      <created>1699765014943</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699765014943</updated>
+    </task>
+    <task id="LOCAL-00014" summary="移除无用代码">
+      <option name="closed" value="true" />
+      <created>1699765124625</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699765124625</updated>
+    </task>
+    <task id="LOCAL-00015" summary="优化代码">
+      <option name="closed" value="true" />
+      <created>1699766086741</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1699766086741</updated>
+    </task>
+    <task id="LOCAL-00016" summary="优化代码">
+      <option name="closed" value="true" />
+      <created>1699766430119</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1699766430119</updated>
+    </task>
+    <task id="LOCAL-00017" summary="修复文章查询bug">
+      <option name="closed" value="true" />
+      <created>1699766827130</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1699766827130</updated>
+    </task>
+    <task id="LOCAL-00018" summary="优化">
+      <option name="closed" value="true" />
+      <created>1699766941979</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1699766941979</updated>
+    </task>
+    <task id="LOCAL-00019" summary="修复文章列表bug">
+      <option name="closed" value="true" />
+      <created>1699767548001</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1699767548001</updated>
+    </task>
+    <task id="LOCAL-00020" summary="分类模块单独拿开">
+      <option name="closed" value="true" />
+      <created>1699767600699</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1699767600699</updated>
+    </task>
+    <task id="LOCAL-00021" summary="分类模块单独拿开">
+      <option name="closed" value="true" />
+      <created>1699768005353</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1699768005354</updated>
+    </task>
+    <task id="LOCAL-00022" summary="优化文章管道">
+      <option name="closed" value="true" />
+      <created>1699768265428</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1699768265428</updated>
+    </task>
+    <task id="LOCAL-00023" summary="优化用户逻辑">
+      <option name="closed" value="true" />
+      <created>1699768979181</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1699768979181</updated>
+    </task>
+    <task id="LOCAL-00024" summary="优化用户逻辑">
+      <option name="closed" value="true" />
+      <created>1699769206154</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1699769206154</updated>
+    </task>
+    <task id="LOCAL-00025" summary="优化用户逻辑">
+      <option name="closed" value="true" />
+      <created>1699769240951</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1699769240951</updated>
+    </task>
+    <task id="LOCAL-00026" summary="增加删除文章逻辑">
+      <option name="closed" value="true" />
+      <created>1699771011558</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1699771011558</updated>
+    </task>
+    <task id="LOCAL-00027" summary="增加删除评论">
+      <option name="closed" value="true" />
+      <created>1699772079348</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1699772079348</updated>
+    </task>
+    <task id="LOCAL-00028" summary="优化代码">
+      <option name="closed" value="true" />
+      <created>1699772691980</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1699772691980</updated>
+    </task>
+    <task id="LOCAL-00029" summary="优化代码">
+      <option name="closed" value="true" />
+      <created>1699772707009</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1699772707009</updated>
+    </task>
+    <task id="LOCAL-00030" summary="优化代码">
+      <option name="closed" value="true" />
+      <created>1699776454699</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1699776454699</updated>
+    </task>
+    <task id="LOCAL-00031" summary="增加鉴权模块">
+      <option name="closed" value="true" />
+      <created>1699884067963</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1699884067963</updated>
+    </task>
+    <task id="LOCAL-00032" summary="增加鉴权模块">
+      <option name="closed" value="true" />
+      <created>1699973049789</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1699973049789</updated>
+    </task>
+    <task id="LOCAL-00033" summary="增加鉴权模块">
+      <option name="closed" value="true" />
+      <created>1699973319237</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1699973319237</updated>
+    </task>
+    <task id="LOCAL-00034" summary="增加鉴权模块">
+      <option name="closed" value="true" />
+      <created>1699973372011</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1699973372011</updated>
+    </task>
+    <task id="LOCAL-00035" summary="优化">
+      <option name="closed" value="true" />
+      <created>1700053652214</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1700053652214</updated>
+    </task>
+    <task id="LOCAL-00036" summary="优化">
+      <option name="closed" value="true" />
+      <created>1700322181150</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1700322181150</updated>
+    </task>
+    <task id="LOCAL-00037" summary="优化">
+      <option name="closed" value="true" />
+      <created>1700327216097</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1700327216097</updated>
+    </task>
+    <task id="LOCAL-00038" summary="优化">
+      <option name="closed" value="true" />
+      <created>1700327547601</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1700327547601</updated>
+    </task>
+    <task id="LOCAL-00039" summary="add: 增加通过用户id查询角色接口">
+      <option name="closed" value="true" />
+      <created>1700369014725</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1700369014725</updated>
+    </task>
+    <task id="LOCAL-00040" summary="调整项目目录结构">
+      <option name="closed" value="true" />
+      <created>1700369272134</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1700369272134</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="判断环境" />
+    <MESSAGE value="编写用户创建文章" />
+    <MESSAGE value="优化插入逻辑和增加评论接口" />
+    <MESSAGE value="优化接口逻辑" />
+    <MESSAGE value="优化代码逻辑" />
+    <MESSAGE value="移除无用代码" />
+    <MESSAGE value="修复文章查询bug" />
+    <MESSAGE value="修复文章列表bug" />
+    <MESSAGE value="分类模块单独拿开" />
+    <MESSAGE value="优化文章管道" />
+    <MESSAGE value="优化用户逻辑" />
+    <MESSAGE value="增加删除文章逻辑" />
+    <MESSAGE value="增加删除评论" />
+    <MESSAGE value="优化代码" />
+    <MESSAGE value="增加鉴权模块" />
+    <MESSAGE value="优化" />
+    <MESSAGE value="add: 增加通过用户id查询角色接口" />
+    <MESSAGE value="调整项目目录结构" />
+    <option name="LAST_COMMIT_MESSAGE" value="调整项目目录结构" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app.module.ts</url>
+          <line>33</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app.module.ts</url>
+          <line>37</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/auth/auth.controller.ts</url>
+          <line>51</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/article/article.controller.ts</url>
+          <line>212</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/user/user.service.ts</url>
+          <line>38</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/user/user.controller.ts</url>
+          <line>11</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/article/article.service.ts</url>
+          <line>21</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/article/article.service.ts</url>
+          <line>133</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/article/article.service.ts</url>
+          <line>129</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/roles/roles.controller.ts</url>
+          <line>70</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/article/article.service.ts</url>
+          <line>104</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/article/article.controller.ts</url>
+          <line>170</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/friendship/friendship.controller.ts</url>
+          <line>24</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/friendship/friendship.controller.ts</url>
+          <line>77</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/roles/roles.service.ts</url>
+          <line>15</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
