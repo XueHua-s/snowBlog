@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1526579-ec02-4654-b04a-65c1304766b5" name="更改" comment="调整项目目录结构" />
+    <list default="true" id="e1526579-ec02-4654-b04a-65c1304766b5" name="更改" comment="调整项目目录结构">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +143,7 @@
       <workItem from="1700327157039" duration="131000" />
       <workItem from="1700327475196" duration="109000" />
       <workItem from="1700368690443" duration="491000" />
-      <workItem from="1700369252016" duration="1531000" />
+      <workItem from="1700369252016" duration="2117000" />
     </task>
     <task id="LOCAL-00001" summary="判断环境">
       <option name="closed" value="true" />
