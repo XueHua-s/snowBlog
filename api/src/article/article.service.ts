@@ -143,6 +143,11 @@ export class ArticleService {
         id: params.classifyId,
       });
     }
+    if (params.userId) {
+      createBuilder.andWhere('user.id = :id', {
+        id: params.userId
+      })
+    }
     if (params.pub !== undefined && params.pub !== null) {
       createBuilder.andWhere('article.pub = :pub', {
         pub: params.pub,

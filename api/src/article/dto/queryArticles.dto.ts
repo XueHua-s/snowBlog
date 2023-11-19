@@ -31,6 +31,12 @@ export class QueryArticlesDto extends PageDto {
   })
   @IsOptional()
   classifyId: number;
+  @ApiProperty({
+    title: '用户ID',
+    required: false,
+  })
+  @IsOptional()
+  userId: number;
   // 不可见, 客户端不可传
   pub: number;
 }
