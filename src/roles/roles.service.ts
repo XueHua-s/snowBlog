@@ -12,7 +12,7 @@ export class RolesService {
     @InjectRepository(Role) private readonly roleRepository: Repository<Role>,
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
-  // 通过用户id获取用户菜单
+  // 通过用户id获取用户角色
   async getUserRoles(userId: number) {
     const data = await this.userRepository
       .createQueryBuilder('user')
@@ -22,7 +22,7 @@ export class RolesService {
       })
       .getOne();
     if (data) {
-      return data.roles.map((item) => ({ ...item, users: { ...item.users } }));
+      return JSON.parse(JSON.stringify(data));
     }
     return null;
   }

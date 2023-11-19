@@ -2,10 +2,10 @@ import {
   Body,
   Controller,
   Get,
-  HttpException,
+  HttpException, Param,
   Post,
-  Req,
-} from '@nestjs/common';
+  Req
+} from "@nestjs/common";
 import { RolesService } from './roles.service';
 import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -30,6 +30,25 @@ export class RolesController {
   @Get('getUserRoles')
   async getUserRoles(@Req() req: JwtAuthRequestType) {
     const data = await this.rolesService.getUserRoles(req.user.id);
+    if (data) {
+      return {
+        code: 1,
+        data: data,
+        message: '查询成功',
+      };
+    }
+    return {
+      code: 0,
+      data: null,
+      message: '查询失败',
+    };
+  }
+  @ApiOperation({
+    summary: '通过用户id获取角色',
+  })
+  @Get('getUserRolesById/:userId')
+  async getUserRolesById(@Param('userId') userId: number) {
+    const data = await this.rolesService.getUserRoles(userId);
     if (data) {
       return {
         code: 1,
