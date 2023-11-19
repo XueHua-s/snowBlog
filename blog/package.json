@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@casl/ability": "^6.5.0",
+    "@layui/layui-vue": "^2.11.5",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
     "lodash": "^4.17.21",
