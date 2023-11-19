@@ -1,8 +1,0 @@
-export enum DBENUM {
-  DB_BASE = 'DB_BASE',
-  DB_HOST = 'DB_HOST',
-  DB_PORT = 'DB_PORT',
-  DB_TYPE = 'DB_TYPE',
-  DB_USERNAME = 'DB_USERNAME',
-  DB_PASSWORD = 'DB_PASSWORD',
-}
