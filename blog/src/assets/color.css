@@ -1,0 +1,6 @@
+:root {
+  /*菜单选中背景色*/
+  --menu-alive-bg-color: rgba(0, 0, 0, 0.1);
+  /*全局滑动条主题色*/
+  --scroll-global-color: #facef4;
+}

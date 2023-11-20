@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1526579-ec02-4654-b04a-65c1304766b5" name="更改" comment="调整项目目录结构">
+      <change afterPath="$PROJECT_DIR$/blog/src/@use/usePageSliderY.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/src/assets/103357150_p0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/src/assets/color.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/src/components/ImageBgComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/src/layout/DefaultLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/blog/.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/assets/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/assets/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/components/TheWelcome.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/components/WelcomeItem.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/components/icons/IconCommunity.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/components/icons/IconDocumentation.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/components/icons/IconEcosystem.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/components/icons/IconSupport.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/components/icons/IconTooling.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/views/AboutView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/views/HomeView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,13 +59,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "development",
-    "last_opened_file_path": "F:/code/js/snowBlog/api",
+    "last_opened_file_path": "F:/code/js/hualingPanels",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "F:\\code\\js\\snowBlog\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "F:\\code\\js\\snowBlog\\api\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -115,10 +136,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start:dev (1)" />
-        <item itemvalue="npm.start:dev" />
-        <item itemvalue="npm.build:uat" />
         <item itemvalue="npm.start:prod" />
+        <item itemvalue="npm.start:dev" />
+        <item itemvalue="npm.start:dev (1)" />
+        <item itemvalue="npm.build:uat" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -144,6 +165,7 @@
       <workItem from="1700327475196" duration="109000" />
       <workItem from="1700368690443" duration="491000" />
       <workItem from="1700369252016" duration="2117000" />
+      <workItem from="1700483761015" duration="1703000" />
     </task>
     <task id="LOCAL-00001" summary="判断环境">
       <option name="closed" value="true" />
