@@ -82,6 +82,7 @@ header {
   position: absolute;
   &.fixed {
     position: fixed;
+    border-bottom: 1px solid #e5e5e5;
     >aside {
       background-color: rgb(255, 255, 255, 0.8);
       li {

@@ -1,9 +1,13 @@
 <template>
   <div class="bg-view">
-    <div class="view"></div>
+    <div class="view">
+      <lay-avatar style="width: 100px;height: 100px" :src="avatarImg" radius></lay-avatar>
+      <h1 class="f24 color-white mt15">小雪花呀</h1>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
+import avatarImg from '@/assets/images/97370135.jpg'
 </script>
 <style lang="scss" scoped>
 @media (max-width: 767px) {
@@ -17,9 +21,26 @@
     background-repeat: no-repeat;
     background-position: center;
     .view {
+      width: 100%;
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       background-color: rgba(0, 0, 0, 0.4);
       z-index: 1;
+      :deep(.layui-avatar) {
+        width: max-content;
+        transition-duration: 500ms;
+        &:hover {
+          transform: rotate(365deg);
+        }
+      }
+      &:hover {
+        :deep(.layui-avatar) {
+          transform: rotate(365deg);
+        }
+      }
     }
   }
 }
@@ -35,8 +56,19 @@
     background-position: center;
     .view {
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       background-color: rgba(0, 0, 0, 0.4);
       z-index: 1;
+      :deep(.layui-avatar) {
+        width: max-content;
+        transition-duration: 500ms;
+        &:hover {
+          transform: rotate(365deg);
+        }
+      }
       //width: 100%;
     }
   }
