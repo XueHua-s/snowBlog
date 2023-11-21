@@ -1,8 +1,7 @@
 <template>
   <div class="bg-view">
     <div class="view">
-      <lay-avatar style="width: 100px;height: 100px" :src="avatarImg" radius></lay-avatar>
-      <h1 class="f24 color-white mt15">小雪花呀</h1>
+      <slot name="default" />
     </div>
   </div>
 </template>

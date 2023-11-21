@@ -36,7 +36,7 @@
   </header>
   <main>
     <!--返回顶部-->
-    <lay-backtop></lay-backtop>
+    <lay-backtop showHeight="120"></lay-backtop>
     <router-view />
   </main>
   <footer>
@@ -85,7 +85,7 @@ header {
     //border-bottom: 1px solid #e5e5e5;
     box-shadow: #333333 0px 0px 4px;
     >aside {
-      background-color: rgb(255, 255, 255, 0.8);
+      background-color: rgb(255, 255, 255, 0.9);
       li {
         color: #333;
       }
@@ -125,6 +125,15 @@ header {
 @media screen and (max-width: 768px){
   header {
     z-index: 2;
+    :has(&.fixed) {
+      .mobile-menu {
+        margin-left: auto;
+        color: #333;
+        display: block;
+        cursor: pointer;
+        //margin-right: 20px;
+      }
+    }
     >aside {
       padding: 18px;
       >ul {
@@ -136,11 +145,14 @@ header {
         transform: translateX(-50%);
         background-color: #fff;
         margin: 20px;
-        width: 60%;
+        width: 0;
+        opacity: 0;
         border-radius: 12px;
         transition-duration: 700ms;
         &.show {
           left: 50%;
+          width: 60%;
+          opacity: 1;
         }
         >li {
           color: #000;

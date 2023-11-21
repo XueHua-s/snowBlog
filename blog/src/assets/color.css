@@ -1,6 +1,8 @@
 :root {
   /*菜单选中背景色*/
-  --menu-alive-bg-color: rgba(0, 0, 0, 0.1);
+  --menu-alive-bg-color: rgba(182, 176, 176, 0.5);
   /*全局滑动条主题色*/
   --scroll-global-color: #facef4;
+/*  版块通栏背景色*/
+  --block-glock-bg-color: #f3f3f3;
 }
