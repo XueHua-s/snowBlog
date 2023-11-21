@@ -36,11 +36,6 @@ import avatarImg from '@/assets/images/97370135.jpg'
           transform: rotate(365deg);
         }
       }
-      &:hover {
-        :deep(.layui-avatar) {
-          transform: rotate(365deg);
-        }
-      }
     }
   }
 }
