@@ -82,6 +82,7 @@ header {
   position: absolute;
   &.fixed {
     position: fixed;
+    z-index: 9000;
     //border-bottom: 1px solid #e5e5e5;
     box-shadow: #333333 0px 0px 4px;
     >aside {

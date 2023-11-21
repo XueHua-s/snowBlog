@@ -31,6 +31,7 @@ import avatarImg from '@/assets/images/97370135.jpg'
       :deep(.layui-avatar) {
         width: max-content;
         transition-duration: 500ms;
+        //z-index: 0;
         &:hover {
           transform: rotate(365deg);
         }
@@ -63,6 +64,7 @@ import avatarImg from '@/assets/images/97370135.jpg'
       z-index: 1;
       :deep(.layui-avatar) {
         width: max-content;
+        //z-index: 0;
         transition-duration: 500ms;
         &:hover {
           transform: rotate(365deg);

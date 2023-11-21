@@ -2,7 +2,7 @@
   <div class="home">
     <!--大图组件-->
     <ImageBgComponent>
-      <lay-avatar style="width: 100px;height: 100px" :src="avatarImg" radius></lay-avatar>
+      <lay-avatar style="width: 100px;height: 100px;" :src="avatarImg" radius></lay-avatar>
       <h1 class="f24 color-white mt15">小雪花呀</h1>
     </ImageBgComponent>
     <div class="block-content">
