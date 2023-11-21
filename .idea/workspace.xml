@@ -5,28 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1526579-ec02-4654-b04a-65c1304766b5" name="更改" comment="调整项目目录结构">
-      <change afterPath="$PROJECT_DIR$/blog/src/@use/usePageSliderY.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/src/assets/103357150_p0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/src/assets/color.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/src/components/ImageBgComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/src/layout/DefaultLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/src/@types/PageInterface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/src/@types/ResponseOver.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/src/api/classify.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/src/assets/images/97370135.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/blog/.env.development" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/assets/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/assets/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/assets/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/components/TheWelcome.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/components/WelcomeItem.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/components/icons/IconCommunity.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/components/icons/IconDocumentation.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/components/icons/IconEcosystem.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/components/icons/IconSupport.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/components/icons/IconTooling.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/views/AboutView.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/blog/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/components/ImageBgComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/components/ImageBgComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/src/request/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/request/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/blog/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
