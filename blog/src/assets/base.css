@@ -7,11 +7,11 @@
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
-/*body {*/
-/*  width: 100%;*/
-/*  overflow-x: hidden;*/
-/*  overflow-y: auto;*/
-/*}*/
+body {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 /* 设置滚动条的样式 */
 *::-webkit-scrollbar {
   width:8px;

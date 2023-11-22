@@ -25,6 +25,22 @@
           {{item.label}}
         </li>
       </ul>
+      <!--  登录按钮-->
+      <div v-if="route.name !== 'login' && route.name !== 'register'" class="login-view">
+        <div @click="router.push({
+          name: 'login'
+        })" class="login-btn">
+          <p>
+            登录
+          </p>
+        </div>
+        <div class="register-btn">
+          <p>
+            注册
+          </p>
+        </div>
+        <img src="../assets/images/up-new-iocn.png" alt="">
+      </div>
       <!--  移动菜单-->
       <div
       @click="mobileShowMenu = !mobileShowMenu"
@@ -36,8 +52,12 @@
   </header>
   <main>
     <!--返回顶部-->
-    <lay-backtop showHeight="120"></lay-backtop>
-    <router-view />
+    <lay-backtop right="50" bottom="50" showHeight="120">
+      <img class="wp100" src="../assets/images/lolisister2.gif" />
+    </lay-backtop>
+    <lay-transition type="fade">
+      <router-view />
+    </lay-transition>
   </main>
   <footer>
     <div class="icp">
@@ -48,10 +68,11 @@
 <script setup lang="ts">
 import usePageSliderY from '@/@use/usePageSliderY';
 import type {Ref} from "vue";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {ref} from "vue";
 const scrollTopY: Ref<Number> = usePageSliderY()
 const route = useRoute()
+const router = useRouter()
 // 移动端是否显示菜单
 const mobileShowMenu = ref(false)
 const topMenus = [
@@ -105,7 +126,7 @@ header {
       display: none;
     }
     >ul {
-      width:960px;
+      //width: 760px;
       display: flex;
       >li {
         padding: 16px 12px;
@@ -119,6 +140,43 @@ header {
         }
         &.alive {
           background-color: var(--menu-alive-bg-color);
+        }
+      }
+    }
+    >.login-view {
+      background-color: #facef4;
+      border-radius: 4px;
+      color: #333333;
+      width: 150px;
+      justify-content: center;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      margin-left: auto;
+      >.login-btn {
+        margin-right: 20px;
+        position: relative;
+        cursor: pointer;
+        transition-duration: 400ms;
+        &:hover {
+          color: #1f8dd2;
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          height: 100%;
+          top: 0;
+          right: -10px;
+          background-color: #ffffff;
+          width: 1px;
+        }
+      }
+      >.register-btn {
+        cursor: pointer;
+        transition-duration: 400ms;
+        &:hover {
+          color: #1f8dd2;
         }
       }
     }
@@ -137,7 +195,7 @@ footer {
     z-index: 2;
     :has(&.fixed) {
       .mobile-menu {
-        margin-left: auto;
+        //margin-left: auto;
         color: #333;
         display: block;
         cursor: pointer;
@@ -158,6 +216,7 @@ footer {
         width: 0;
         opacity: 0;
         border-radius: 12px;
+        z-index: 9000;
         transition-duration: 700ms;
         &.show {
           left: 50%;
@@ -169,7 +228,7 @@ footer {
         }
       }
       >.mobile-menu {
-        margin-left: auto;
+        //margin-left: auto;
         color: #fff;
         display: block;
         cursor: pointer;
