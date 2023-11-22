@@ -40,7 +40,9 @@
     <router-view />
   </main>
   <footer>
-    尾部
+    <div class="icp">
+      <a href="" target="_blank">萌ICP备20230462号</a >
+    </div>
   </footer>
 </template>
 <script setup lang="ts">
@@ -120,6 +122,13 @@ header {
         }
       }
     }
+  }
+}
+footer {
+  background-color: #f3f3f3;
+  padding: 40px;
+  >.icp {
+    text-align: center;
   }
 }
 // 移动端菜单样式

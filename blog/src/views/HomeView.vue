@@ -79,7 +79,7 @@ getBlockList()
 </script>
 <style lang="scss" scoped>
 .home {
-  height: 2000vh;
+  //height: 2000vh;
   .block-content {
     max-width: 1366px;
     //min-width: 768px;
