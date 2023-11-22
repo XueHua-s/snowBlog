@@ -126,7 +126,7 @@ header {
 }
 footer {
   background-color: #f3f3f3;
-  padding: 40px;
+  padding: 20px;
   >.icp {
     text-align: center;
   }
