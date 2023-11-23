@@ -26,7 +26,7 @@
         </li>
       </ul>
       <!--  登录按钮-->
-      <div v-if="route.name !== 'login' && route.name !== 'register'" class="login-view">
+      <div v-if="route.name !== 'login' && route.name !== 'register' && !store.userInfo?.token" class="login-view">
         <div @click="router.push({
           name: 'login'
         })" class="login-btn">
@@ -46,7 +46,7 @@
       @click="mobileShowMenu = !mobileShowMenu"
       class="mobile-menu"
       :style="{
-        marginLeft: (route.name !== 'login' && route.name !== 'register') ? '0px' : 'auto' as string
+        marginLeft: (route.name !== 'login' && route.name !== 'register' && !store.userInfo?.token) ? '0px' : 'auto' as string
       }"
       >
         <lay-icon
@@ -74,9 +74,11 @@ import usePageSliderY from '@/@use/usePageSliderY';
 import type {Ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import {ref} from "vue";
+import {useStore} from "@/stores/counter";
 const scrollTopY: Ref<Number> = usePageSliderY()
 const route = useRoute()
 const router = useRouter()
+const store = useStore()
 // 移动端是否显示菜单
 const mobileShowMenu = ref(false)
 const topMenus = [

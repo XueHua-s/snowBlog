@@ -13,11 +13,11 @@ export const useStore = defineStore('store', () => {
   const userInfo = ref<localUserInfo | null>(null)
   const localUserInfo = localStorage.getItem(LocalStrongKey.userInfo)
   if (localUserInfo) {
-    userInfo.value = JSON.parse(decryptData(localUserInfo, import.meta.env.VITE_AE4_SELECRT_KEY))
+    userInfo.value = JSON.parse(encryptData(localUserInfo, import.meta.env.VITE_AE4_SELECRT_KEY))
   }
   const setUserInfo = (data: localUserInfo) => {
     userInfo.value = data
-    localStorage.setItem(LocalStrongKey.userInfo, encryptData(JSON.stringify(data), import.meta.env.VITE_AE4_SELECRT_KEY))
+    localStorage.setItem(LocalStrongKey.userInfo, decryptData(JSON.stringify(data), import.meta.env.VITE_AE4_SELECRT_KEY))
   }
   return {
     userInfo: readonly(userInfo),
