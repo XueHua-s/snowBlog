@@ -7,7 +7,7 @@
     </ImageBgComponent>
     <div class="block-content">
       <TitleBlock>
-        <span>版块</span>
+        <span class="f20">版块</span>
       </TitleBlock>
       <div class="block-list mt20">
         <div class="block-item"

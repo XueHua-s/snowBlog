@@ -1,4 +1,5 @@
-export interface ResponseOver {
+export interface ResponseOver<T> {
   code: number,
-  message: string
+  message: string,
+  data: T
 }

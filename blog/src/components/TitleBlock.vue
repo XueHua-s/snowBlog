@@ -25,9 +25,9 @@ const props = defineProps({
     background-color: #333333;
   }
   >.text {
-    font-size: 24px;
+    //font-size: 24px;
     font-weight: 900;
-    color: #333;
+    //color: #333;
     margin-left: 12px;
   }
 }

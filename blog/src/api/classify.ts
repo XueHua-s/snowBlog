@@ -14,12 +14,10 @@ export interface GetThreeClassifyListResItem {
   parentId: number,
   updateTime: string,
 }
-interface GetThreeClassifyListRes extends ResponseOver {
-  data: {
-    records: Array<GetThreeClassifyListResItem>,
-    total: number
-  }
-}
+type GetThreeClassifyListRes = ResponseOver<{
+  records: Array<GetThreeClassifyListResItem>,
+  total: number
+}>
 export const getThreeClassifyList = (data: GetThreeClassifyListData): Promise<GetThreeClassifyListRes> => request({
   url: '/classify/getClassifyList',
   method: 'POST',

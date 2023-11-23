@@ -44,7 +44,11 @@
       <!--  移动菜单-->
       <div
       @click="mobileShowMenu = !mobileShowMenu"
-      class="mobile-menu">
+      class="mobile-menu"
+      :style="{
+        marginLeft: (route.name !== 'login' && route.name !== 'register') ? '0px' : 'auto' as string
+      }"
+      >
         <lay-icon
         :type="mobileShowMenu ? 'layui-icon-spread-left' : 'layui-icon-shrink-right'"></lay-icon>
       </div>
@@ -183,7 +187,7 @@ header {
   }
 }
 footer {
-  background-color: #f3f3f3;
+  background-color: #fff;
   padding: 20px;
   >.icp {
     text-align: center;

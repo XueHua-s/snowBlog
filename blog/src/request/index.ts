@@ -12,7 +12,7 @@ request.interceptors.request.use((config) => {
 })
 // 响应拦截
 request.interceptors.response.use((res) => {
-  console.log(res)
+  // console.log(res)
   if (res.status >= 200 && res.status <= 290) {
     // 请求成功
     return res.data
