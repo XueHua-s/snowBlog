@@ -50,6 +50,8 @@ const submitRef: any = ref(null)
 const isRead = ref(false)
 const submitForm: {
   [key: string]: string;
+  username: string;
+  password: string;
 } = reactive({
   username: '',
   password: ''
@@ -71,6 +73,7 @@ const loginUser = () => {
         layer.msg("登录成功", { time: 1000, icon: 1 })
         store.setUserInfo({
           ...submitForm,
+          ...data.data,
           read: isRead.value
         } as localUserInfo)
         router.go(-1)

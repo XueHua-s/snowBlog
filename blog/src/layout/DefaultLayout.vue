@@ -26,7 +26,7 @@
         </li>
       </ul>
       <!--  登录按钮-->
-      <div v-if="route.name !== 'login' && route.name !== 'register' && !store.userInfo?.token" class="login-view">
+      <div v-if="(route.name !== 'login' && route.name !== 'register') && !store.userInfo?.token" class="login-view">
         <div @click="router.push({
           name: 'login'
         })" class="login-btn">
