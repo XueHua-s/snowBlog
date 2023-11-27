@@ -1,24 +1,12 @@
 import axios from 'axios';
 import {AxiosError, Axios} from 'axios'
+import {beforEach, beforEachErr} from '@/request/beforEach.ts'
+import {responseEach, responseEachErr} from "@/request/reseponseEach";
 const request: Axios = axios.create({
   timeout: 180000
 })
 // 请求拦截
-request.interceptors.request.use((config) => {
-  config.baseURL = import.meta.env.VITE_APP_REQUEST_BASE
-  return config
-}, (err: AxiosError) => {
-  return err
-})
+request.interceptors.request.use(beforEach, beforEachErr)
 // 响应拦截
-request.interceptors.response.use((res) => {
-  // console.log(res)
-  if (res.status >= 200 && res.status <= 290) {
-    // 请求成功
-    return res.data
-  }
-  return res
-}, (err: AxiosError) => {
-  return err
-})
+request.interceptors.response.use(responseEach, responseEachErr)
 export default request
