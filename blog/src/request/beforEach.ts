@@ -4,7 +4,6 @@ const loadingCount = new LoadingCount()
 export const beforEach = (config: AxiosRequestConfig) => {
   config.baseURL = import.meta.env.VITE_APP_REQUEST_BASE
   loadingCount.addCount()
-  console.log(this)
   return config
 }
 export const beforEachErr = (err: AxiosError) => {
