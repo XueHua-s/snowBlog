@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {AxiosError, Axios} from 'axios'
-import {beforEach, beforEachErr} from '@/request/beforEach.ts'
+import {beforEach, beforEachErr} from '@/request/beforEach'
 import {responseEach, responseEachErr} from "@/request/reseponseEach";
 const request: Axios = axios.create({
   timeout: 180000
