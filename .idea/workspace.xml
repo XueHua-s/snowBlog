@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1526579-ec02-4654-b04a-65c1304766b5" name="更改" comment="调整项目目录结构">
-      <change afterPath="$PROJECT_DIR$/blog/src/@types/PageInterface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/src/@types/ResponseOver.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/src/api/classify.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/src/assets/images/97370135.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/blog/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/components/ImageBgComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/components/ImageBgComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/request/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/request/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/views/HomeView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/blog/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,22 +32,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "development",
-    "last_opened_file_path": "F:/code/js/hualingPanels",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "F:\\code\\js\\snowBlog\\api\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;development&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/code/js/gejuqiche&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;F:\\code\\js\\snowBlog\\api\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\code\js\snow-blog-template\src\userLog" />
@@ -154,6 +145,8 @@
       <workItem from="1700368690443" duration="491000" />
       <workItem from="1700369252016" duration="2117000" />
       <workItem from="1700483761015" duration="1703000" />
+      <workItem from="1700786294489" duration="373000" />
+      <workItem from="1700973260822" duration="40000" />
     </task>
     <task id="LOCAL-00001" summary="判断环境">
       <option name="closed" value="true" />

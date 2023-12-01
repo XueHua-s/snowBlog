@@ -24,6 +24,14 @@ const router = createRouter({
             title: '登录'
           },
           component: () => import('@/views/LoginView.vue')
+        },
+        {
+          path: '/articleList',
+          name: 'articleList',
+          meta: {
+            title: '文章列表'
+          },
+          component: () => import('@/views/ArticleList.vue')
         }
       ]
     }

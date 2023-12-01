@@ -16,6 +16,9 @@
       }"
       >
         <li v-for="item of topMenus"
+        @click="router.push({
+          name: item.routeName
+        })"
         :key="item.routeName"
         :class="{
           alive: route.name === item.routeName
