@@ -5,32 +5,52 @@
       <h1 class="f24 color-white mt15">文章列表</h1>
     </ImageBgComponent>
     <div class="article-list">
-      <title-block>做一个大家都满意的博客</title-block>
+      <title-block class="mb20">做一个大家都满意的博客</title-block>
       <div class="article-item"
       v-for="item of articleRecords"
       :key="item.id"
       >
         <div class="left">
-          <NImage preview-disabled width="100%" lazy :src="item?.cover" />
+          <NImage object-fit="cover" preview-disabled width="100%" lazy :src="item?.cover" />
         </div>
         <div class="right">
           <div class="top">
-            <span class="f14">{{item?.classify?.name}}</span>
-            <h3 class="font18">{{item.title}}</h3>
+            <span class="f14">
+              <img class="wp30" :src="item?.classify?.icon" alt="">
+              {{item?.classify?.name}}
+            </span>
+            <h3 class="font18">
+              {{item.title}}
+            </h3>
             <p>
               {{item.description}}
             </p>
           </div>
           <div class="bottom">
-            <NAvatar :src="item?.user?.profile?.avatar" size="large" />
-            <p>
-              {{item?.user?.profile?.nickName}}
-            </p>
+            <div class="author">
+              <NAvatar :src="item?.user?.profile?.avatar" size="large" />
+              <p>
+                {{item?.user?.profile?.nickName}}
+              </p>
+            </div>
             <span>
-              {{item?.createdTime}}
+              {{dayjs(item?.createdTime).format('YYYY-MM-DD')}}
             </span>
           </div>
         </div>
+      </div>
+      <div class="page flex-ct">
+        <lay-page
+          @change="({ limit }) => {
+            if (limit !== pageConfig.size) {
+              pageConfig.current = 1
+            }
+            pageConfig.size = limit
+            console.log(pageConfig.size)
+            loadArticles()
+          }"
+          v-model="pageConfig.current"
+          :limit="pageConfig.size" :total="pageConfig.total" />
       </div>
     </div>
   </div>
@@ -44,6 +64,7 @@ import {getArticles} from "@/api/article";
 import avatarImg from "@/assets/images/97370135.jpg";
 import ImageBgComponent from "@/components/ImageBgComponent.vue";
 import TitleBlock from "@/components/TitleBlock.vue";
+import dayjs from "dayjs";
 interface routeQueryType {
   classifyId: string
 }
@@ -57,7 +78,8 @@ const articleRecords = ref([])
 const loadArticles = async () => {
   try {
     const data = await getArticles({
-      ...pageConfig
+      ...pageConfig,
+      total: undefined
     })
     if (data.code === 1) {
       articleRecords.value = data.data.records
@@ -77,17 +99,96 @@ loadArticles()
   max-width: 1366px;
   >.article-item {
     display: flex;
+    margin-bottom: 20px;
+    //cursor: pointer;
+    box-shadow: 1px 4px 15px rgb(125 147 178 / 32%);
+    border-radius: 12px;
+    padding: 12px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:hover {
+      .left :deep(img) {
+        transform: scale(1.2);
+      }
+    }
     >.left {
       width: 380px;
       height: 220px;
       overflow: hidden;
+      border-radius: 12px;
       :deep(img) {
-        width: 100% !important;
+        width: 100%;
         height: auto;
+        transition-duration: 400ms;
       }
     }
     >.right {
+      flex: 1;
       margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      >.top {
+        span {
+          display: flex;
+          align-items: center;
+          >img {
+            margin-right: 5px;
+          }
+          margin-bottom: 10px;
+        }
+        h3 {
+          transition-duration: 500ms;
+          cursor: pointer;
+          &:hover {
+            color: #e77474;
+          }
+        }
+        p {
+          color: #c0c0c0;
+          margin-top: 5px;
+          -webkit-line-clamp: 2;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      >.bottom {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+        justify-content: space-between;
+        >.author {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            >p {
+              color: #e77474;
+            }
+          }
+          >p {
+            margin-left: 5px;
+            color: #333;
+            transition-duration: 400ms;
+          }
+        }
+        >span {
+          color: #c0c0c0;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .article-item {
+    flex-direction: column;
+    >.left {
+      margin-bottom: 20px;
+      width: 100% !important;
     }
   }
 }

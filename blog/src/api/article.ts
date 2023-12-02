@@ -26,8 +26,8 @@ type ArticleListOver = ResponseOver<{
   records: Array<Array<ArticleListItem>>,
   total: number
 }>
-export const getArticles = (data: GetArticlesQuery): Promise<ArticleListOver> => request({
-  url: '/article/getArticles?current=1&size=10',
+export const getArticles = (params: GetArticlesQuery): Promise<ArticleListOver> => request({
+  url: '/article/getArticles',
   method: 'GET',
-  data
+  params
 })
