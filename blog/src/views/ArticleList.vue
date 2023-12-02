@@ -79,6 +79,7 @@ const loadArticles = async () => {
   try {
     const data = await getArticles({
       ...pageConfig,
+      classifyId: route.query?.classifyId,
       total: undefined
     })
     if (data.code === 1) {
