@@ -27,23 +27,23 @@
           <lay-icon :type="item.icon"></lay-icon>
           {{item.label}}
         </li>
-      </ul>
-      <!--  登录按钮-->
-      <div v-if="(route.name !== 'login' && route.name !== 'register') && !store.userInfo?.token" class="login-view">
-        <div @click="router.push({
+        <!--  登录按钮-->
+        <div v-if="(route.name !== 'login' && route.name !== 'register') && !store.userInfo?.token" class="login-view">
+          <div @click="router.push({
           name: 'login'
         })" class="login-btn">
-          <p>
-            登录
-          </p>
+            <p>
+              登录
+            </p>
+          </div>
+          <div class="register-btn">
+            <p>
+              注册
+            </p>
+          </div>
+          <img src="../assets/images/up-new-iocn.png" alt="">
         </div>
-        <div class="register-btn">
-          <p>
-            注册
-          </p>
-        </div>
-        <img src="../assets/images/up-new-iocn.png" alt="">
-      </div>
+      </ul>
       <!--  移动菜单-->
       <div
       @click="mobileShowMenu = !mobileShowMenu"
@@ -109,16 +109,18 @@ const topMenus = [
 </script>
 <style lang="scss" scoped>
 header {
-  width: 100%;
-  //width: 100vw;
+  //width: 100%;
+  width: 100vw;
   position: absolute;
+  transition-duration: 500ms;
+  padding: 4px 0;
   &.fixed {
     position: fixed;
     z-index: 9000;
+    background-color: rgb(255, 255, 255, 0.9);
     //border-bottom: 1px solid #e5e5e5;
     box-shadow: #333333 0px 0px 4px;
     >aside {
-      background-color: rgb(255, 255, 255, 0.9);
       li {
         color: #333;
       }
@@ -127,16 +129,19 @@ header {
   >aside {
     display: flex;
     align-items: center;
-    width: 100%;
+    min-width: 80vw;
     transition-duration: 600ms;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: rgb(255, 255, 255, 0.0);
+    position: relative;
     >.mobile-menu {
       display: none;
     }
     >ul {
       //width: 760px;
+      //position: relative;
       display: flex;
+      padding-right: 180px;
       >li {
         padding: 16px 12px;
         transition-duration: 400ms;
@@ -151,41 +156,45 @@ header {
           background-color: var(--menu-alive-bg-color);
         }
       }
-    }
-    >.login-view {
-      background-color: #facef4;
-      border-radius: 4px;
-      color: #333333;
-      width: 150px;
-      justify-content: center;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      margin-right: 20px;
-      margin-left: auto;
-      >.login-btn {
-        margin-right: 20px;
-        position: relative;
-        cursor: pointer;
-        transition-duration: 400ms;
-        &:hover {
-          color: #1f8dd2;
+      >.login-view {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        background-color: #facef4;
+        border-radius: 4px;
+        color: #333333;
+        width: 150px;
+        justify-content: center;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        //margin-right: 20px;
+        //margin-left: auto;
+        >.login-btn {
+          margin-right: 20px;
+          position: relative;
+          cursor: pointer;
+          transition-duration: 400ms;
+          &:hover {
+            color: #1f8dd2;
+          }
+          &::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            top: 0;
+            right: -10px;
+            background-color: #ffffff;
+            width: 1px;
+          }
         }
-        &::before {
-          content: '';
-          position: absolute;
-          height: 100%;
-          top: 0;
-          right: -10px;
-          background-color: #ffffff;
-          width: 1px;
-        }
-      }
-      >.register-btn {
-        cursor: pointer;
-        transition-duration: 400ms;
-        &:hover {
-          color: #1f8dd2;
+        >.register-btn {
+          cursor: pointer;
+          transition-duration: 400ms;
+          &:hover {
+            color: #1f8dd2;
+          }
         }
       }
     }
@@ -213,10 +222,15 @@ footer {
     }
     >aside {
       padding: 18px;
+      min-width: auto;
+      width: 100%;
+      justify-content: space-between;
       >ul {
         display: flex;
         position: absolute;
         flex-direction: column;
+        padding-right: 0;
+        padding-bottom: 80px;
         top: 0;
         left: 200%;
         transform: translateX(-50%);
@@ -235,9 +249,15 @@ footer {
         >li {
           color: #000;
         }
+        >.login-view {
+          bottom: 0;
+          left: 12px;
+          top: auto;
+          right: auto;
+        }
       }
       >.mobile-menu {
-        //margin-left: auto;
+        margin-left: auto;
         color: #fff;
         display: block;
         cursor: pointer;
