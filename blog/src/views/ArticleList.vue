@@ -6,6 +6,32 @@
     </ImageBgComponent>
     <div class="article-list">
       <title-block>做一个大家都满意的博客</title-block>
+      <div class="article-item"
+      v-for="item of articleRecords"
+      :key="item.id"
+      >
+        <div class="left">
+          <NImage width="100%" lazy :src="item?.cover" />
+        </div>
+        <div class="right">
+          <div class="top">
+            <span class="f14">{{item?.classify?.name}}</span>
+            <h3 class="font18">{{item.title}}</h3>
+            <p>
+              {{item.description}}
+            </p>
+          </div>
+          <div class="bottom">
+            <NAvatar :src="item?.user?.profile?.avatar" size="large" />
+            <p>
+              {{item?.user?.profile?.nickName}}
+            </p>
+            <span>
+              {{item?.createdTime}}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -13,6 +39,7 @@
 import { useRoute } from 'vue-router'
 import type {RouteType} from '@/@types/RouteType'
 import { reactive, ref } from 'vue'
+import { NAvatar, NImage } from 'naive-ui'
 import {getArticles} from "@/api/article";
 import avatarImg from "@/assets/images/97370135.jpg";
 import ImageBgComponent from "@/components/ImageBgComponent.vue";
@@ -46,6 +73,7 @@ loadArticles()
 <style lang="scss" scoped>
 .article-list {
   margin: auto;
+  padding: 40px;
   width: 1366px;
 }
 </style>
