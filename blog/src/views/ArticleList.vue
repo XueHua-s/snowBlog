@@ -46,7 +46,6 @@
               pageConfig.current = 1
             }
             pageConfig.size = limit
-            console.log(pageConfig.size)
             loadArticles()
           }"
           v-model="pageConfig.current"
