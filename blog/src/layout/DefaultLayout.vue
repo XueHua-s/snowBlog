@@ -230,7 +230,6 @@ footer {
         position: absolute;
         flex-direction: column;
         padding-right: 0;
-        padding-bottom: 80px;
         top: 0;
         left: 200%;
         transform: translateX(-50%);
@@ -241,6 +240,9 @@ footer {
         border-radius: 12px;
         z-index: 9000;
         transition-duration: 700ms;
+        &:has(.login-view) {
+          padding-bottom: 80px;
+        }
         &.show {
           left: 50%;
           width: 60%;
