@@ -11,7 +11,7 @@
       :key="item.id"
       >
         <div class="left">
-          <NImage width="100%" lazy :src="item?.cover" />
+          <NImage preview-disabled width="100%" lazy :src="item?.cover" />
         </div>
         <div class="right">
           <div class="top">
@@ -74,6 +74,21 @@ loadArticles()
 .article-list {
   margin: auto;
   padding: 40px;
-  width: 1366px;
+  max-width: 1366px;
+  >.article-item {
+    display: flex;
+    >.left {
+      width: 380px;
+      height: 220px;
+      overflow: hidden;
+      :deep(img) {
+        width: 100% !important;
+        height: auto;
+      }
+    }
+    >.right {
+      margin-left: 20px;
+    }
+  }
 }
 </style>
