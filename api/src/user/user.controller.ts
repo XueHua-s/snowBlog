@@ -91,6 +91,7 @@ export class UserController {
   }
   @ApiOperation({
     summary: '为用户分配角色',
+    description: '敏感数据需鉴权',
   })
   @JwtSwaggerAuthHeader()
   @JwtAuth()

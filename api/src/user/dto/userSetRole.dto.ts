@@ -11,6 +11,7 @@ export class UserSetRoleDto {
   @IsNotEmpty()
   @ApiProperty({
     title: '角色列表',
+    example: [1, 2, 3],
   })
   roles: Partial<Role>[];
 }
