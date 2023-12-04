@@ -20,7 +20,7 @@ export class FriendshipService {
       createFriendshipDto.user.id,
     );
     if (!ability.can('friendship', createFriendshipDto.user.id.toString())) {
-      throw new HttpException('您没有管理友链的权限', 202);
+      throw new HttpException('您没有管理友链的权限', 403);
     }
     const data = await this.friendshipRepository.save(createFriendshipDto);
     if (data) {
@@ -55,7 +55,7 @@ export class FriendshipService {
     // 鉴权
     const ability = await this.permissionService.authenticationExpose(userId);
     if (!ability.can('friendship', userId.toString())) {
-      throw new HttpException('您没有管理友链的权限', 202);
+      throw new HttpException('您没有管理友链的权限', 403);
     }
     const data = await this.friendshipRepository.remove({
       id: id,

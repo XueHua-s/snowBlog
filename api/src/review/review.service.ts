@@ -95,7 +95,7 @@ export class ReviewService {
       });
       return JSON.parse(JSON.stringify(data));
     } else {
-      throw new HttpException('用户没有权限删除该评论', 401);
+      throw new HttpException('用户没有权限删除该评论', 403);
     }
   }
 }

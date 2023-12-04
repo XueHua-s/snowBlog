@@ -5,12 +5,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as argon2 from 'argon2';
 import { Profile } from './entities/profile.entity';
 import { UserProfileDto } from './dto/userProfile.dto';
+import { UserSetRoleDto } from './dto/userSetRole.dto';
+import { PermissionService } from "../permission/permission.service";
 @Injectable()
 export class UserService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     @InjectRepository(Profile)
     private readonly profileRespository: Repository<Profile>,
+    private readonly permissionService: PermissionService,
   ) {}
   // 注册用户方法
   async registerUser(user: Partial<User>) {
@@ -103,6 +106,21 @@ export class UserService {
       }
       return null;
     }
+  }
+  // 设置用户角色
+  async setUserRole(query: UserSetRoleDto, userId: number) {
+    const ability = await this.permissionService.authenticationExpose(userId);
+    if (!ability.can('allotRolePermisson', String(userId))) {
+      throw new HttpException('您没有权限进行此操作', 403);
+    }
+    const data = await this.userRepository.save({
+      id: query.id,
+      roles: query.roles,
+    });
+    if (data) {
+      return data;
+    }
+    return null;
   }
   // 删除用户(鉴权有无权限)
   async removeUser() {}

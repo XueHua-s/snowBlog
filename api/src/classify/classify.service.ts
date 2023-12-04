@@ -94,7 +94,7 @@ export class ClassifyService {
   async addClassify(params: CreateClassifyDto, userId: number) {
     const ablity = await this.permissionService.authenticationExpose(userId);
     if (!ablity.can('classify', userId.toString)) {
-      return new HttpException('您没权限设置分类', 202);
+      return new HttpException('您没权限设置分类', 403);
     }
     const data = await this.classifyRepository.save(params);
     if (data) {

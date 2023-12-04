@@ -63,10 +63,10 @@ export class ArticleService {
       .getOne();
     const ability = await this.permissionService.authenticationExpose(userId);
     if (articleDetail.user.id !== userId) {
-      return new HttpException('您没有权限更新文章', 202);
+      return new HttpException('您没有权限更新文章', 403);
     } else if (!ability.can('examine', userId.toString)) {
       // 判断用户有无审核文章权限, 无报错
-      return new HttpException('您没有权限更新文章', 202);
+      return new HttpException('您没有权限更新文章', 403);
     }
     const data = await this.articleRepository.save(params);
     await this.logService.addLog({
@@ -83,10 +83,10 @@ export class ArticleService {
     const articleDetail = await this.getArticleDetail(articleId);
     const ability = await this.permissionService.authenticationExpose(userId);
     if (articleDetail.user.id !== userId) {
-      return new HttpException('您没有权限删除文章', 202);
+      return new HttpException('您没有权限删除文章', 403);
     } else if (!ability.can('examine', userId.toString)) {
       // 判断用户有无审核文章权限, 无报错
-      return new HttpException('您没有权限删除文章', 202);
+      return new HttpException('您没有权限删除文章', 403);
     }
     const data = await this.articleRepository.remove(articleDetail);
     if (data) {

@@ -16,7 +16,7 @@ export class LogService {
   async getLogs(params: FindLogsQueryDto, userId: number) {
     const ability = await this.permissionService.authenticationExpose(userId);
     if (!ability.can('sensitiveQuery', userId.toString)) {
-      return new HttpException('您没有权限查看日志', 202);
+      return new HttpException('您没有权限查看日志', 403);
     }
     const builderFind = this.logsRepository
       .createQueryBuilder('')

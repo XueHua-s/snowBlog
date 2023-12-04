@@ -120,7 +120,7 @@ export class ArticleController {
       req.user.id,
     );
     if (!ability.can('examine', req.user.id.toString())) {
-      return new HttpException('您没有文章审核权限', 202);
+      return new HttpException('您没有文章审核权限', 403);
     }
     const data = await this.articleService.getArticles({
       ...query,

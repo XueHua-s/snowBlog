@@ -97,7 +97,7 @@ export class RolesController {
     // 验证用户敏感数据权限
     const ablity = await this.permissionService.authenticationExpose(req.user.id);
     if (!ablity.can('sensitiveQuery', req.user.id.toString())) {
-      return new HttpException('您没有权限查看', 202);
+      return new HttpException('您没有权限查看', 403);
     }
     const data = await this.rolesService.findRoleAllUser(body);
     if (data) {
@@ -128,7 +128,7 @@ export class RolesController {
       req.user.id,
     );
     if (!ability.can('allotRolePermisson', req.user.toString)) {
-      return new HttpException('您没有权限为角色分配权限', 202);
+      return new HttpException('您没有权限为角色分配权限', 403);
     }
     const data = await this.rolesService.saveRolePermission(body);
     if (data) {

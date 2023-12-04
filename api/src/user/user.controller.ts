@@ -1,9 +1,11 @@
-import { Body, Controller, Get, Param, Put, Req } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Req } from '@nestjs/common';
 import { UserService } from './user.service';
 import JwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
 import { UserProfileDto } from './dto/userProfile.dto';
+import { UserSetRolePipe } from './pipe/userSetRole.pipe';
+import { UserSetRoleDto } from './dto/userSetRole.dto';
 @ApiTags('用户接口')
 @Controller('user')
 export class UserController {
@@ -85,6 +87,27 @@ export class UserController {
       code: 0,
       data: null,
       message: '为查找到该用户信息',
+    };
+  }
+  @ApiOperation({
+    summary: '为用户分配角色',
+  })
+  @JwtSwaggerAuthHeader()
+  @JwtAuth()
+  @Post('setUserRole')
+  async setUserRole(@Body(UserSetRolePipe) body: UserSetRoleDto, req: JwtAuthRequestType) {
+    const data = await this.userService.setUserRole(body, req.user.id);
+    if (data) {
+      return {
+        code: 1,
+        data,
+        message: '分配成功',
+      };
+    }
+    return {
+      code: 0,
+      data,
+      message: '分配失败',
     };
   }
 }
