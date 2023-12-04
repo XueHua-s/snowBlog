@@ -5,11 +5,14 @@ import { Repository } from 'typeorm';
 import { RolesService } from '../roles/roles.service';
 import { Permission } from './entities/permission.entity';
 import { defineAbility } from '@casl/ability';
+import { CreatePermissionDto } from './dto/query-permission.dto';
 
 @Injectable()
 export class PermissionService {
   constructor(
     @InjectRepository(Role) private readonly roleRepository: Repository<Role>,
+    @InjectRepository(Permission)
+    private readonly permissionRepository: Repository<Permission>,
     private roleService: RolesService,
   ) {}
   // 通过角色id获取权限
@@ -61,5 +64,27 @@ export class PermissionService {
       }
     });
     return ablity;
+  }
+  // 分页查询权限列表
+  async queryFindPermission(query: CreatePermissionDto) {
+    const createBuilder =
+      this.permissionRepository.createQueryBuilder('permission');
+    if (query.name) {
+      createBuilder.where('permission.name LIKE :name', {
+        name: query.name,
+      });
+    }
+    const records = await createBuilder
+      .limit(query.size || 10)
+      .offset(((query.current || 1) - 1) * (query.size || 10))
+      .getMany();
+    const total = await createBuilder.getCount();
+    if (records) {
+      return {
+        records: JSON.parse(JSON.stringify(records)),
+        total,
+      };
+    }
+    return null;
   }
 }

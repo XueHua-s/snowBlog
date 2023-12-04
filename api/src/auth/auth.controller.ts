@@ -2,11 +2,14 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SigninUserDto } from './dto/signin-user.dto';
 import { UserService } from '../user/user.service';
-import { JwtService } from "@nestjs/jwt";
+import { JwtService } from '@nestjs/jwt';
 @ApiTags('鉴权接口')
 @Controller('auth')
 export class AuthController {
-  constructor(private userService: UserService, private jwt: JwtService) {}
+  constructor(
+    private userService: UserService,
+    private jwt: JwtService,
+  ) {}
   @ApiOperation({
     summary: '用户登录接口',
   })

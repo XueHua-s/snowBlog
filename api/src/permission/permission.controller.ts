@@ -12,6 +12,7 @@ import { PermissionService } from './permission.service';
 import { ApiOperation, ApiProperty, ApiTags } from '@nestjs/swagger';
 import jwtAuth, { JwtSwaggerAuthHeader } from '../decorator/JwtAuth';
 import { JwtAuthRequestType } from '../@type/JwtAuthRequestType';
+import { CreatePermissionDto } from './dto/query-permission.dto';
 @ApiTags('权限接口')
 @Controller('permission')
 export class PermissionController {
@@ -50,6 +51,25 @@ export class PermissionController {
       return {
         code: 1,
         data: data,
+        message: '查询成功',
+      };
+    }
+    return {
+      code: 0,
+      data: null,
+      message: '查询失败',
+    };
+  }
+  @ApiOperation({ summary: '分页查询权限列表' })
+  @JwtSwaggerAuthHeader()
+  @jwtAuth()
+  @Post('queryFindPermission')
+  async queryFindPermission(@Body() body: CreatePermissionDto) {
+    const data = await this.permissionService.queryFindPermission(body);
+    if (data) {
+      return {
+        code: 1,
+        data,
         message: '查询成功',
       };
     }

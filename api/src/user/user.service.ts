@@ -38,6 +38,12 @@ export class UserService {
     return await this.userRepository.save({
       username: user.username,
       password: hashPassword,
+      roles: [
+        // 普通用户
+        {
+          id: 3,
+        },
+      ],
     });
   }
   // 验证用户密码方法

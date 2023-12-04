@@ -62,8 +62,8 @@ export class RolesController {
       message: '查询失败',
     };
   }
-  @JwtSwaggerAuthHeader()
-  @JwtAuth()
+  // @JwtSwaggerAuthHeader()
+  // @JwtAuth()
   @ApiOperation({
     summary: '分页查询角色列表',
   })
