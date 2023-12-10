@@ -9,7 +9,7 @@
       <div class="search-query p10 flex">
         <div class="flex-mc">
           <span class="wp100">关键词:</span>
-          <lay-input v-model="queryConfig.title" type="text"></lay-input>
+          <lay-input v-model="queryConfig.keyword" type="text"></lay-input>
         </div>
         <div class="flex-mc ml15">
           <lay-button @click="pageConfig.current = 1;loadArticles()" type="primary" class="mr5">搜索</lay-button>
@@ -78,7 +78,7 @@ interface routeQueryType {
   classifyId: string
 }
 const queryConfig = reactive({
-  title: ''
+  keyword: ''
 })
 const route: RouteType<routeQueryType> = useRoute()
 const pageConfig = reactive({
@@ -106,7 +106,7 @@ const loadArticles = async () => {
 }
 loadArticles()
 const resetSearch = () => {
-  queryConfig.title = ''
+  queryConfig.keyword = ''
   pageConfig.current = 1
   loadArticles()
 }
