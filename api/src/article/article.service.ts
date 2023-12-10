@@ -133,10 +133,17 @@ export class ArticleService {
       .leftJoinAndSelect('article.user', 'user')
       .leftJoinAndSelect('article.classify', 'classify')
       .orderBy('article.createdTime', params.orderBy === '2' ? 'ASC' : 'DESC');
-    if (params.title) {
-      createBuilder.where('article.title LIKE :title', {
-        title: `%${params.title}%`,
-      });
+    if (params.keyword) {
+      createBuilder
+        .where('article.title LIKE :keyword', {
+          title: `%${params.keyword}%`,
+        })
+        .orWhere('article.content LIKE :keyword', {
+          title: `%${params.keyword}%`,
+        })
+        .orWhere('article.description LIKE :keyword', {
+          title: `%${params.keyword}%`,
+        });
     }
     if (params.classifyId) {
       createBuilder.andWhere('classify.id = :id', {

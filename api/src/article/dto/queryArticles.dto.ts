@@ -7,16 +7,13 @@ export class QueryArticlesDto extends PageDto {
     super();
   }
   @ApiProperty({
-    title: '筛选参数',
+    title: '关键字',
+    description: '搜索的关键词',
     required: false,
   })
   @IsOptional()
   @IsString()
-  title: string;
-  @ApiProperty({
-    title: '筛选参数',
-    required: false,
-  })
+  keyword: string;
   @ApiProperty({
     title: '排序',
     description: '1降序, 2升序, 默认为1',
