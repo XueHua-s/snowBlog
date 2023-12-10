@@ -135,7 +135,7 @@ export class ArticleService {
       .orderBy('article.createdTime', params.orderBy === '2' ? 'ASC' : 'DESC');
     if (params.title) {
       createBuilder.where('article.title LIKE :title', {
-        title: params.title,
+        title: `%${params.title}%`,
       });
     }
     if (params.classifyId) {
@@ -145,8 +145,8 @@ export class ArticleService {
     }
     if (params.userId) {
       createBuilder.andWhere('user.id = :id', {
-        id: params.userId
-      })
+        id: params.userId,
+      });
     }
     if (params.pub !== undefined && params.pub !== null) {
       createBuilder.andWhere('article.pub = :pub', {

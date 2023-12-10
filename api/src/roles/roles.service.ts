@@ -31,7 +31,7 @@ export class RolesService {
     const findBuilder = this.roleRepository.createQueryBuilder('role');
     if (query.roleName) {
       findBuilder.where('role.roleName LIKE :roleName', {
-        roleName: query.roleName,
+        roleName: `%${query.roleName}$`,
       });
     }
     const data = await findBuilder

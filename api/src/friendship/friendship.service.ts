@@ -34,7 +34,7 @@ export class FriendshipService {
       this.friendshipRepository.createQueryBuilder('friendship');
     if (queryFriendshipDto.name) {
       findBuilder.where('friendship.name LIKE :name', {
-        name: queryFriendshipDto.name,
+        name: `%${queryFriendshipDto.name}%`,
       });
     }
     const data = await findBuilder

@@ -71,7 +71,7 @@ export class PermissionService {
       this.permissionRepository.createQueryBuilder('permission');
     if (query.name) {
       createBuilder.where('permission.name LIKE :name', {
-        name: query.name,
+        name: `%${query.name}%`,
       });
     }
     const records = await createBuilder
