@@ -1,6 +1,8 @@
 import request from '@/request'
 import type {PageInterface} from "@/@types/PageInterface";
 import type {ResponseOver} from "@/@types/ResponseOver";
+import type {GetThreeClassifyListResItem} from "@/api/classify";
+import type {User} from "@/api/user";
 interface GetArticlesQuery extends PageInterface {
   title: string;
   orderBy: '1' | '2';
@@ -19,8 +21,8 @@ interface ArticleDetail extends ArticleItem {
   content: string;
 }
 interface ArticleListItem extends ArticleItem {
-  user: any;
-  classify: any;
+  user: User;
+  classify: GetThreeClassifyListResItem;
 }
 type ArticleListOver = ResponseOver<{
   records: Array<Array<ArticleListItem>>,
