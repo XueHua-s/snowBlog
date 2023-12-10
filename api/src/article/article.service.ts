@@ -136,13 +136,13 @@ export class ArticleService {
     if (params.keyword) {
       createBuilder
         .where('article.title LIKE :keyword', {
-          title: `%${params.keyword}%`,
+          keyword: `%${params.keyword}%`,
         })
         .orWhere('article.content LIKE :keyword', {
-          title: `%${params.keyword}%`,
+          keyword: `%${params.keyword}%`,
         })
         .orWhere('article.description LIKE :keyword', {
-          title: `%${params.keyword}%`,
+          keyword: `%${params.keyword}%`,
         });
     }
     if (params.classifyId) {
