@@ -33,7 +33,12 @@
                 :key="item2.id"
               >
                   <!--<lay-card>-->
-                    <div class="secondLevel-item">
+                    <div @click="router.push({
+                      name: 'articleList',
+                      query: {
+                        classifyId: item2.id
+                      }
+                    })" class="secondLevel-item">
                       <NImage
                           :preview-disabled="true"
                           lazy
@@ -59,6 +64,7 @@ import {getThreeClassifyList} from "@/api/classify";
 import type { GetThreeClassifyListResItem } from '@/api/classify'
 import TitleBlock from "@/components/TitleBlock.vue";
 import avatarImg from "@/assets/images/97370135.jpg";
+import router from "@/router";
 // 分类列表
 const blockList = ref<Array<GetThreeClassifyListResItem>>([])
 const getBlockList = async () => {
