@@ -6,6 +6,16 @@
     </ImageBgComponent>
     <div class="article-list">
       <title-block class="mb20">做一个大家都满意的博客</title-block>
+      <div class="search-query p10 flex">
+        <div class="flex-mc">
+          <span class="wp100">关键词:</span>
+          <lay-input v-model="queryConfig.title" type="text"></lay-input>
+        </div>
+        <div class="flex-mc ml15">
+          <lay-button @click="pageConfig.current = 1;loadArticles()" type="primary" class="mr5">搜索</lay-button>
+          <lay-button @click="resetSearch">重置</lay-button>
+        </div>
+      </div>
       <div class="article-item"
       v-for="item of articleRecords"
       :key="item.id"
@@ -67,6 +77,9 @@ import dayjs from "dayjs";
 interface routeQueryType {
   classifyId: string
 }
+const queryConfig = reactive({
+  title: ''
+})
 const route: RouteType<routeQueryType> = useRoute()
 const pageConfig = reactive({
   current: 1,
@@ -79,6 +92,7 @@ const loadArticles = async () => {
     const data = await getArticles({
       ...pageConfig,
       classifyId: route.query?.classifyId,
+      ...queryConfig,
       total: undefined
     })
     if (data.code === 1) {
@@ -91,6 +105,11 @@ const loadArticles = async () => {
   }
 }
 loadArticles()
+const resetSearch = () => {
+  queryConfig.title = ''
+  pageConfig.current = 1
+  loadArticles()
+}
 </script>
 <style lang="scss" scoped>
 .article-list {
