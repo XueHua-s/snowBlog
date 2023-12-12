@@ -70,7 +70,7 @@ getArticleDetail()
         content: '';
         width: 100%;
         height: 2px;
-        background: linear-gradient(270deg, #fff 0%, #9d9d9d 50%, #fff 100%);
+        background: linear-gradient(270deg, #fff 0%, #e1e1e1 50%, #fff 100%);
         position: absolute;
         bottom: 0;
         left: 0;
