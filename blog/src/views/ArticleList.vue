@@ -29,7 +29,12 @@
               <img class="wp30" :src="item?.classify?.icon" alt="">
               {{item?.classify?.name}}
             </span>
-            <h3 class="font18">
+            <h3 @click="router.push({
+              name: 'articleDetail',
+              query: {
+                id: item.id
+              }
+            })" class="font18">
               {{item.title}}
             </h3>
             <p>
@@ -65,7 +70,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 import type {RouteType} from '@/@types/RouteType'
 import { reactive, ref } from 'vue'
 import { NAvatar, NImage } from 'naive-ui'
@@ -81,6 +86,7 @@ const queryConfig = reactive({
   keyword: ''
 })
 const route: RouteType<routeQueryType> = useRoute()
+const router = useRouter()
 const pageConfig = reactive({
   current: 1,
   size: 10,

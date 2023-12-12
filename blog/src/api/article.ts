@@ -9,7 +9,7 @@ interface GetArticlesQuery extends PageInterface {
   classifyId: string;
   userId: string;
 }
-interface ArticleItem {
+export interface ArticleItem {
   id: number;
   description: string;
   cover: string;
@@ -32,4 +32,8 @@ export const getArticles = (params: GetArticlesQuery): Promise<ArticleListOver> 
   url: '/article/getArticles',
   method: 'GET',
   params
+})
+export const getDetail = (id: number): Promise<ArticleItem> => request({
+  url: `/article/getArticleById/${id}`,
+  method: 'GET'
 })

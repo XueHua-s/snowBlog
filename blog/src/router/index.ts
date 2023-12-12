@@ -32,6 +32,14 @@ const router = createRouter({
             title: '文章列表'
           },
           component: () => import('@/views/ArticleList.vue')
+        },
+        {
+          path: '/articleDetail',
+          name: 'articleDetail',
+          meta: {
+            title: '文章详情'
+          },
+          component: () => import('@/views/ArticleDetail.vue')
         }
       ]
     }
