@@ -186,4 +186,8 @@ loadReviewList()
     }
   }
 }
+.write-review {
+  max-width: 1366px;
+  margin: auto;
+}
 </style>
