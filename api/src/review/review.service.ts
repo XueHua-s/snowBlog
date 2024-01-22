@@ -39,7 +39,7 @@ export class ReviewService {
     const data = await this.reviewRepository
       .createQueryBuilder('review')
       .leftJoinAndSelect('review.user', 'user')
-      .orderBy('review.createdTime', 'DESC')
+      .orderBy('review.createdTime', params.sort || 'DESC')
       .offset(((params.current || 1) - 1) * (params.size || 10))
       .limit(params.size || 10)
       .getMany();
