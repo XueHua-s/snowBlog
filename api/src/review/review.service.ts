@@ -36,16 +36,17 @@ export class ReviewService {
   }
   // 查询文章关联评论
   async findArticleReview(params: ArticleCheckReviewPageFindDto) {
-    const data = await this.reviewRepository
+    const data = this.reviewRepository
       .createQueryBuilder('review')
       .leftJoinAndSelect('review.user', 'user')
       .orderBy('review.createdTime', params.sort || 'DESC')
       .offset(((params.current || 1) - 1) * (params.size || 10))
       .limit(params.size || 10)
-      .getMany();
+    const records = await data.getMany();
+    const total = await data.getCount()
     // 子查询完整用户信息
     const promiseAll = [];
-    for (const item of data) {
+    for (const item of records) {
       promiseAll.push(
         this.userService.getUserInfoById(item.user.id).then((user) => {
           item.user = user;
@@ -54,7 +55,10 @@ export class ReviewService {
     }
     await Promise.all(promiseAll);
     if (data) {
-      return JSON.parse(JSON.stringify(data));
+      return JSON.parse(JSON.stringify({
+        records,
+        total
+      }));
     }
     return null;
   }
